@@ -130,14 +130,21 @@ const App = () => {
                 <motion.section
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
-                    className="grid grid-cols-2 md:grid-cols-4 gap-4 border-t border-gray-800 pt-12"
+                    className="border-t border-gray-800 pt-12 flex flex-col md:flex-row justify-between items-center gap-6"
                 >
-                    {['Cryptography', 'Web Exploitation', 'Forensics', 'Blockchain', 'React / Node', 'Python', 'OSINT', 'Network Sec'].map((skill, i) => (
-                        <div key={i} className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors cursor-default">
-                            <ChevronRight size={14} className="text-purple-500" />
-                            <span className="text-sm tracking-wider">{skill}</span>
-                        </div>
-                    ))}
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                        {['Cryptography', 'Web Exploitation', 'Forensics', 'Blockchain', 'React / Node', 'Python', 'OSINT', 'Network Sec'].map((skill, i) => (
+                            <div key={i} className="flex items-center gap-2 text-gray-500 hover:text-white transition-colors cursor-default">
+                                <ChevronRight size={14} className="text-purple-500" />
+                                <span className="text-sm tracking-wider">{skill}</span>
+                            </div>
+                        ))}
+                    </div>
+
+                    <a href="mailto:utx1zz@gmail.com" className="flex items-center gap-2 text-gray-400 hover:text-cyan-400 transition-colors">
+                        <span className="text-sm tracking-wider font-bold">utx1zz@gmail.com</span>
+                        <ExternalLink size={14} />
+                    </a>
                 </motion.section>
 
             </main>
