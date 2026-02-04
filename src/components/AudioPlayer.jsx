@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Volume2, VolumeX } from 'lucide-react';
 
 const AudioPlayer = () => {
-    const [isMuted, setIsMuted] = useState(true);
+    const [isMuted, setIsMuted] = useState(false);
     const [audioError, setAudioError] = useState(false);
     const audioRef = useRef(null);
 
