@@ -29,6 +29,9 @@ const About = () => {
                     <p>{'>'} Rank 1 MeitY CTF.</p>
                     <p>{'>'} Building secure, scalable systems like Xaenithra Command Center.</p>
                 </div>
+
+                {/* Visual Accent */}
+                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-bronze-500/10 rounded-full blur-xl animate-pulse"></div>
             </motion.div>
 
             {/* Education */}

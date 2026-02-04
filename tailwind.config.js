@@ -31,7 +31,7 @@ export default {
             },
             fontFamily: {
                 mono: ['"JetBrains Mono"', 'monospace'],
-                display: ['"Courier New"', 'monospace'], 
+                display: ['"Courier New"', 'monospace'],
             },
             animation: {
                 'scanline': 'scanline 8s linear infinite',
@@ -48,6 +48,10 @@ export default {
                     '2%, 64%': { transform: 'translate(2px,0) skew(0deg)' },
                     '4%, 60%': { transform: 'translate(-2px,0) skew(0deg)' },
                     '62%': { transform: 'translate(0,0) skew(5deg)' },
+                },
+                float: {
+                    '0%, 100%': { transform: 'translateY(0)' },
+                    '50%': { transform: 'translateY(-20px)' },
                 }
             }
         },

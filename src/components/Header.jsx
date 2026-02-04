@@ -15,15 +15,20 @@ const Header = () => {
                     <span className="text-sm tracking-widest uppercase">Target Aquired: UTX1ZZ</span>
                 </div>
 
-                <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-2 text-coffee-100 relative group cursor-default">
-                    <span className="relative z-10">UTKARSH</span>
-                    <span className="absolute left-1 top-1 text-bronze-600 opacity-0 group-hover:opacity-100 transition-opacity duration-100 mix-blend-screen select-none -z-10 animate-glitch">UTKARSH</span>
-                </h1>
-                <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-4 text-bronze-500">
+                <div className="relative inline-block mb-4">
+                    <h1 className="text-6xl md:text-9xl font-black tracking-tighter text-coffee-100 relative z-10 mix-blend-difference">
+                        UTKARSH
+                    </h1>
+                    <h1 className="absolute top-0 left-0 text-6xl md:text-9xl font-black tracking-tighter text-bronze-500 opacity-50 blur-[2px] animate-glitch scale-[1.02]">
+                        UTKARSH
+                    </h1>
+                </div>
+
+                <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-8 text-transparent bg-clip-text bg-gradient-to-r from-bronze-500 via-amber-600 to-coffee-400 animate-pulse-slow">
                     PRATHAM
                 </h1>
 
-                <h2 className="text-xl md:text-2xl font-bold text-coffee-300 flex flex-col md:flex-row gap-2 md:gap-4 mb-6 font-mono">
+                <h2 className="text-xl md:text-3xl font-bold text-coffee-300 flex flex-col md:flex-row gap-2 md:gap-4 mb-8 font-mono border-l-4 border-amber-500 pl-4 bg-black/30 py-2">
                     <span className="text-amber-500">Cybersecurity & Full Stack Developer</span>
                     <span className="hidden md:block text-coffee-600">|</span>
                     <span>CTF Competitor</span>
