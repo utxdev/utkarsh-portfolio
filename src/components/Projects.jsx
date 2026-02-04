@@ -6,13 +6,11 @@ const Projects = () => {
     const [activeImage, setActiveImage] = React.useState(0);
 
     const trinetraImages = [
-        "/assets/trinetra_new_1.png",
-        "/assets/trinetra_new_2.png",
-        "/assets/trinetra_modules.png",
-        "/assets/trinetra_timeline.png",
-        "/assets/trinetra_evidence.png",
-        "/assets/trinetra_karma.png",
-        "/assets/trinetra_report.png"
+        "/assets/trinetra_final_1.png",
+        "/assets/trinetra_final_2.png",
+        "/assets/trinetra_final_3.png",
+        "/assets/trinetra_final_4.png",
+        "/assets/trinetra_final_5.png"
     ];
 
     React.useEffect(() => {
