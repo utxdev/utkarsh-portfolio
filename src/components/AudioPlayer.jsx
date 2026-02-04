@@ -13,10 +13,13 @@ const AudioPlayer = () => {
         if (audioRef.current) {
             audioRef.current.volume = 0.05; // Very low volume (5%)
             if (!isMuted) {
-                audioRef.current.play().catch(e => {
-                    console.error("Audio autoplay failed:", e);
-                    // Autoplay policies might block this until interaction
-                });
+                const playPromise = audioRef.current.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(e => {
+                        console.log("Autoplay blocked by browser policy. Reverting to muted.");
+                        setIsMuted(true);
+                    });
+                }
             } else {
                 audioRef.current.pause();
             }
