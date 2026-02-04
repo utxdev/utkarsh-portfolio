@@ -72,7 +72,7 @@ const Header = () => {
 
                     <Terminal size={18} className="text-amber-500" />
                     <span className="font-bold tracking-widest font-mono text-xs md:text-sm text-coffee-100 group-hover:text-amber-400 transition-colors">
-                        [ ACCESS_DOSSIER ]
+                        Download Resume
                     </span>
                 </a>
             </motion.div>

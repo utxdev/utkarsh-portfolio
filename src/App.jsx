@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import CyberDoodleBackground from './components/CyberDoodleBackground';
+import CyberBackground from './components/CyberBackground';
+import AudioPlayer from './components/AudioPlayer';
 import Header from './components/Header';
 import About from './components/About';
 import Experience from './components/Experience';
@@ -17,7 +18,8 @@ const App = () => {
 
     return (
         <div className={`min-h-screen bg-coffee-950 text-coffee-100 font-mono selection:bg-amber-900/50 selection:text-amber-200 overflow-x-hidden transition-opacity duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
-            <CyberDoodleBackground />
+            <CyberBackground />
+            <AudioPlayer />
 
             <main className="relative z-10 container mx-auto px-6 py-12 max-w-6xl">
                 <Header />
