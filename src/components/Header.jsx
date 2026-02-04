@@ -61,12 +61,12 @@ const Header = () => {
             >
                 <div className="absolute -inset-0.5 bg-gradient-to-r from-bronze-600 to-amber-900 rounded opacity-50 group-hover:opacity-100 blur transition duration-500"></div>
                 <a
-                    href="/resume.pdf"
-                    download
+                    href="/assets/resume.pdf"
+                    download="Utkarsh_Pratham_Resume.pdf"
                     className="relative px-6 py-3 bg-coffee-950 border border-coffee-800 flex items-center gap-3 hover:border-bronze-500 transition-colors group-hover:text-bronze-400 group-active:translate-y-0.5"
                 >
                     <Download size={18} />
-                    <span className="font-bold tracking-widest font-mono text-sm">ACCESS_RESUME</span>
+                    <span className="font-bold tracking-widest font-mono text-sm">INITIATE_PROFILING</span>
                 </a>
             </motion.div>
         </header>

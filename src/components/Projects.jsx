@@ -51,7 +51,14 @@ const Projects = () => {
                     whileInView={{ opacity: 1, scale: 1 }}
                     className="bg-coffee-950/80 border border-bronze-500/50 rounded-xl overflow-hidden shadow-[0_0_30px_rgba(205,127,50,0.1)] relative group"
                 >
-                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-bronze-500 via-amber-500 to-bronze-500 animate-scanline opacity-50"></div>
+                    {/* HUD Corners - The Innovation */}
+                    <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-amber-500 z-30 opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-amber-500 z-30 opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-amber-500 z-30 opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-amber-500 z-30 opacity-60 group-hover:opacity-100 transition-opacity"></div>
+
+                    {/* Central Focus Recticle */}
+                    <div className="absolute inset-0 border border-coffee-800/30 z-20 pointer-events-none group-hover:border-amber-500/20 transition-colors duration-500"></div>
 
                     <div className="grid lg:grid-cols-2 gap-0">
                         {/* Image Side - Carousel */}

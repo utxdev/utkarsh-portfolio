@@ -12,7 +12,7 @@ const Achievements = () => {
         {
             title: "Cipher Hunt 2.0 | 2025",
             rank: "Global Rank 7",
-            desc: "Notable performance in Digital Forensics and Binary Exploitation skills."
+            desc: "Top 10 Global Cipher Hunt 2.0. Notable performance in Digital Forensics and Binary Exploitation skills."
         },
         {
             title: "IIT Madras – Shaastra CTF | 2025",
