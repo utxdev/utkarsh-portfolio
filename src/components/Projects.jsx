@@ -22,16 +22,18 @@ const Projects = () => {
 
     const projects = [
         {
-            title: "Xaenithra Command Center",
-            desc: "Secure, scalable system for the Xaenithra team. Bridges offensive security operations with full-stack management.",
-            tech: ["Full Stack", "Security", "Scalable Systems"],
-            icon: <Database size={24} className="text-bronze-500" />
+            title: "COMPANIO | AI Assistant",
+            desc: "Advanced neural interface companion. Designed for seamless interaction, task automation, and digital companionship.",
+            tech: ["React 19", "Node.js", "Socket.io", "OpenAI API"],
+            icon: <Database size={24} className="text-bronze-500" />,
+            link: "https://github.com/utxdev/Companio"
         },
         {
-            title: "Mobile Learning Roadmap",
-            desc: "Gamified hold-to-progress interactions with swipe-based navigation. Privacy-focused client-side application.",
-            tech: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
-            icon: <TabletSmartphone size={24} className="text-coffee-300" />
+            title: "PATHFINDER | Learning Protocol",
+            desc: "TikTok-style learning experience for the terminal generation. Vertical swipe navigation with hold-to-progress mechanics.",
+            tech: ["React", "TypeScript", "Framer Motion", "Vercel"],
+            icon: <TabletSmartphone size={24} className="text-coffee-300" />,
+            link: "https://github.com/utxdev/Pathfinder"
         }
     ];
 
@@ -155,7 +157,9 @@ const Projects = () => {
                             <div className="p-3 bg-coffee-950 rounded-lg border border-coffee-800 group-hover:border-bronze-500/50 transition-colors">
                                 {project.icon}
                             </div>
-                            <ExternalLink size={18} className="text-coffee-600 group-hover:text-amber-500 transition-colors cursor-pointer" />
+                            <a href={project.link} target="_blank" rel="noopener noreferrer">
+                                <ExternalLink size={18} className="text-coffee-600 group-hover:text-amber-500 transition-colors cursor-pointer" />
+                            </a>
                         </div>
 
                         <h4 className="text-xl font-bold text-coffee-100 mb-2 font-mono group-hover:text-amber-500 transition-colors">
