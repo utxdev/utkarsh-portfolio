@@ -63,10 +63,17 @@ const Header = () => {
                 <a
                     href="/assets/resume.pdf"
                     download="Utkarsh_Pratham_Resume.pdf"
-                    className="relative px-6 py-3 bg-coffee-950 border border-coffee-800 flex items-center gap-3 hover:border-bronze-500 transition-colors group-hover:text-bronze-400 group-active:translate-y-0.5"
+                    className="relative px-8 py-3 bg-black/50 border border-amber-500/50 rounded-full flex items-center gap-3 hover:border-amber-400 hover:shadow-[0_0_20px_rgba(245,158,11,0.3)] transition-all group-hover:scale-105 active:scale-95"
                 >
-                    <Download size={18} />
-                    <span className="font-bold tracking-widest font-mono text-sm">INITIATE_PROFILING</span>
+                    {/* Glowing scanning effect inside */}
+                    <div className="absolute inset-0 rounded-full overflow-hidden">
+                        <div className="absolute top-0 left-[-100%] w-[50%] h-full bg-gradient-to-r from-transparent via-amber-500/20 to-transparent animate-[shimmer_2s_infinite]"></div>
+                    </div>
+
+                    <Terminal size={18} className="text-amber-500" />
+                    <span className="font-bold tracking-widest font-mono text-xs md:text-sm text-coffee-100 group-hover:text-amber-400 transition-colors">
+                        [ ACCESS_DOSSIER ]
+                    </span>
                 </a>
             </motion.div>
         </header>
