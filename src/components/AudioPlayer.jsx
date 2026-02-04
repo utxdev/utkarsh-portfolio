@@ -6,15 +6,12 @@ const AudioPlayer = () => {
     const [audioError, setAudioError] = useState(false);
     const audioRef = useRef(null);
 
-    // Stream URL: Lofi 24/7 (Stable HTTPS stream)
-    // Alternative: https://stream.zeno.fm/0r0xa854rp8uv
-    // Stream URL: Lofi 24/7 (Stable HTTPS stream)
-    // Alternative: https://stream.zeno.fm/0r0xa854rp8uv
-    const streamUrl = "https://stream.zeno.fm/0r0xa854rp8uv";
+    // Local Lo-Fi Loop (Copyright Free)
+    const streamUrl = "/assets/music.mp3";
 
     useEffect(() => {
         if (audioRef.current) {
-            audioRef.current.volume = 0.4; // Set initial volume to 40%
+            audioRef.current.volume = 0.05; // Very low volume (5%)
             if (!isMuted) {
                 audioRef.current.play().catch(e => {
                     console.error("Audio autoplay failed:", e);
@@ -69,7 +66,7 @@ const AudioPlayer = () => {
 
             {/* Label for clarity */}
             <span className={`text-xs font-mono font-bold tracking-widest transition-all duration-300 ${isMuted ? 'text-coffee-600 opacity-0 group-hover:opacity-100' : 'text-amber-500 opacity-100'}`}>
-                {audioError ? 'OFFLINE' : (isMuted ? 'MUTE' : 'ON AIR')}
+                {isMuted ? 'MUTE' : 'ON AIR'}
             </span>
 
             <audio
