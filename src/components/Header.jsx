@@ -1,0 +1,71 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Terminal, Download, MapPin, Mail, Linkedin } from 'lucide-react';
+
+const Header = () => {
+    return (
+        <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-24 gap-8 relative z-10">
+            <motion.div
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8 }}
+            >
+                <div className="flex items-center gap-2 text-bronze-400 mb-2 font-mono">
+                    <Terminal size={18} />
+                    <span className="text-sm tracking-widest uppercase">Target Aquired: UTX1ZZ</span>
+                </div>
+
+                <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-2 text-coffee-100 relative group cursor-default">
+                    <span className="relative z-10">UTKARSH</span>
+                    <span className="absolute left-1 top-1 text-bronze-600 opacity-0 group-hover:opacity-100 transition-opacity duration-100 mix-blend-screen select-none -z-10 animate-glitch">UTKARSH</span>
+                </h1>
+                <h1 className="text-6xl md:text-8xl font-black tracking-tighter mb-4 text-bronze-500">
+                    PRATHAM
+                </h1>
+
+                <h2 className="text-xl md:text-2xl font-bold text-coffee-300 flex flex-col md:flex-row gap-2 md:gap-4 mb-6 font-mono">
+                    <span className="text-amber-500">Cybersecurity & Full Stack Developer</span>
+                    <span className="hidden md:block text-coffee-600">|</span>
+                    <span>CTF Competitor</span>
+                </h2>
+
+                <div className="flex flex-wrap gap-4 text-sm text-coffee-400 font-mono">
+                    <span className="flex items-center gap-2">
+                        <MapPin size={16} className="text-bronze-500" /> New Delhi
+                    </span>
+                    <a href="mailto:utx1zz@gmail.com" className="flex items-center gap-2 hover:text-amber-500 transition-colors">
+                        <Mail size={16} className="text-bronze-500" /> utx1zz@gmail.com
+                    </a>
+                    <a href="https://www.linkedin.com/in/utkarsh-pratham/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-amber-500 transition-colors">
+                        <Linkedin size={16} className="text-bronze-500" /> LinkedIn
+                    </a>
+                </div>
+
+                <div className="flex gap-3 mt-8">
+                    <div className="px-2 py-1 border-l-2 border-amber-500 bg-amber-900/10 text-xs font-mono text-amber-500">
+                        TEAM LEADER @ XAENITHRA
+                    </div>
+                </div>
+            </motion.div>
+
+            <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3 }}
+                className="relative group block"
+            >
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-bronze-600 to-amber-900 rounded opacity-50 group-hover:opacity-100 blur transition duration-500"></div>
+                <a
+                    href="/resume.pdf"
+                    download
+                    className="relative px-6 py-3 bg-coffee-950 border border-coffee-800 flex items-center gap-3 hover:border-bronze-500 transition-colors group-hover:text-bronze-400 group-active:translate-y-0.5"
+                >
+                    <Download size={18} />
+                    <span className="font-bold tracking-widest font-mono text-sm">ACCESS_RESUME</span>
+                </a>
+            </motion.div>
+        </header>
+    );
+};
+
+export default Header;
