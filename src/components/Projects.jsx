@@ -69,42 +69,42 @@ const Projects = () => {
     const projects = [
         {
             title: "TRINETRA",
-            desc: "Advanced PowerShell investigation & forensic data extraction tool for active incident response.",
-            tech: ["PowerShell", "Forensics", "Live Analysis"],
+            desc: "A military-grade digital forensics framework designed for active incident response. Trinetra automates the extraction of artifacts from compromised Windows/Linux systems, generating court-admissible reports in real-time. It features a custom PowerShell engine for deep-dive memory analysis and live telemetry.",
+            tech: ["PowerShell 7", "Live Forensics", "Artifact Extraction", "Report Gen"],
             icon: <Terminal size={20} />,
-            img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
+            img: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&q=80&w=1000",
             links: { github: "https://github.com/utxdev/Xaenithra-ps6-investigation", live: "#" }
         },
         {
             title: "CYBER_ECOSYSTEM",
-            desc: "Comprehensive cybersecurity awareness platform featuring 11+ interactive tools (Steganography, OSINT, etc).",
-            tech: ["React", "Vite", "Cyber Tools"],
+            desc: "An all-encompassing cybersecurity awareness platform simulating real-world threat scenarios. Features 11+ interactive modules including a Steganography encoder, OSINT investigation dashboard, and a phishing simulation engine. Designed to train users in identifying and neutralizing digital threats.",
+            tech: ["React.js", "Vite", "Interactive Labs", "Gamified Learning"],
             icon: <Globe size={20} />,
-            img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1000",
+            img: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000",
             links: { github: "https://github.com/utxdev/cyber-ecosystem", live: "#" }
         },
         {
             title: "XAENITHRA_ENC",
-            desc: "Custom encryption/encoding framework for secure communication and payload obfuscation.",
-            tech: ["Python", "Cryptography", "Obfuscation"],
+            desc: "A custom-built cryptographic framework for secure communication channels. Implements a modified AES-256 algorithm with dynamic key rotation and payload obfuscation techniques. Primarily used for secure C2 (Command & Control) communication simulations and avoiding signature-based detection.",
+            tech: ["Python 3", "Cryptography", "Payload Obfuscation", "AES-256"],
             icon: <Shield size={20} />,
-            img: "https://images.unsplash.com/photo-1558494949-efc5e60dc3bd?auto=format&fit=crop&q=80&w=1000",
+            img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1000",
             links: { github: "https://github.com/utxdev/Xaenithra-Encoded", live: "#" }
         },
         {
             title: "PATHFINDER",
-            desc: "Network reconnaissance and vulnerability mapping utility for automated pentesting workflows.",
-            tech: ["Go", "Network Scanning", "Automation"],
+            desc: "An automated network reconnaissance utility written in Go for high-speed vulnerability mapping. Pathfinder scans target subnets, identifies open ports, fingerprints services, and maps potential attack vectors, feeding data directly into the pentesting workflow.",
+            tech: ["Go (Golang)", "Network Scanner", "Vuln Mapping", "Concurrency"],
             icon: <Search size={20} />,
-            img: "https://images.unsplash.com/photo-1510511459019-5dda7724fd82?auto=format&fit=crop&q=80&w=1000",
+            img: "https://images.unsplash.com/photo-1558494949-efc5e60dc3bd?auto=format&fit=crop&q=80&w=1000",
             links: { github: "https://github.com/utxdev", live: "#" }
         },
         {
             title: "COMPANIO",
-            desc: "AI-driven security assistant for real-time threat monitoring and log analysis.",
-            tech: ["AI/ML", "Python", "Log Analysis"],
+            desc: "Your intelligent SOC analyst assistant. Companio uses machine learning to parse massive log files (syslog, auth.log) and identify anomalous patterns indicative of a breach. It provides natural language summaries of threats, reducing alert fatigue for security operations teams.",
+            tech: ["Python", "TensorFlow Lite", "NLP", "Log Parsing"],
             icon: <Database size={20} />,
-            img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1000",
+            img: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1000",
             links: { github: "https://github.com/utxdev", live: "#" }
         }
     ];
@@ -116,7 +116,7 @@ const Projects = () => {
                 <h3 className="text-3xl font-display font-bold text-white text-glow-cyan">PROJECT_MODULES</h3>
             </div>
 
-            <div className="flex flex-col gap-8">
+            <div className="flex flex-col gap-12">
                 {projects.map((p, i) => (
                     <ProjectCard key={i} project={p} index={i} />
                 ))}
