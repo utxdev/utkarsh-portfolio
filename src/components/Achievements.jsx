@@ -34,13 +34,22 @@ const AchievementItem = ({ title, rank, org, desc, year, delay }) => (
 const Achievements = () => {
     return (
         <section className="container mx-auto px-4 py-12 max-w-6xl">
-            <div className="flex items-center gap-4 mb-12 border-b border-white/10 pb-6">
-                <Award size={32} className="text-neon-cyan" />
-                <h2 className="text-3xl font-display font-bold text-white">
-                    MISSION <span className="text-neon-violet">LOGS</span>
-                </h2>
-                <div className="ml-auto text-xs font-mono text-gray-500 hidden md:block">
-                    [CLASSIFIED RECORDS DECLASSIFIED]
+            <div className="flex flex-col md:flex-row md:items-center gap-4 mb-12 border-b border-white/10 pb-6">
+                <div className="flex items-center gap-4">
+                    <Award size={32} className="text-neon-cyan" />
+                    <h2 className="text-3xl font-display font-bold text-white">
+                        MISSION <span className="text-neon-violet">LOGS</span>
+                    </h2>
+                </div>
+
+                <div className="md:ml-auto flex items-center gap-4">
+                    <a href="https://xaenithra.com" target="_blank" className="px-4 py-1.5 rounded-full border border-neon-cyan/30 bg-neon-cyan/5 text-neon-cyan text-xs font-mono tracking-wider hover:bg-neon-cyan/20 transition-all flex items-center gap-2 group">
+                        <Target size={14} className="group-hover:animate-spin" />
+                        XAENITHRA | TEAM LEADER
+                    </a>
+                    <div className="text-xs font-mono text-gray-500 hidden md:block">
+                        [CLASSIFIED RECORDS DECLASSIFIED]
+                    </div>
                 </div>
             </div>
 
@@ -48,7 +57,7 @@ const Achievements = () => {
                 <AchievementItem
                     title="Shaastra CTF (National Finals)"
                     rank="National Finalist (Rank 6 Quals / Rank 7 Finals)"
-                    org={<span>Team Leader @ <a href="https://xaenithra.com" target="_blank" className="text-neon-cyan hover:underline">Xaenithra</a> | IIT Madras</span>}
+                    org="IIT Madras"
                     year="2025"
                     desc="Top performer among hundreds of participants. Solved complex challenges in cryptography and web exploitation during the 24-hour hackathon."
                     delay={0.1}
@@ -56,7 +65,7 @@ const Achievements = () => {
                 <AchievementItem
                     title="Cipher Hunt 2.0"
                     rank="Rank 7"
-                    org={<span>Team Leader @ <a href="https://xaenithra.com" target="_blank" className="text-neon-cyan hover:underline">Xaenithra</a> | Cryptographic Society</span>}
+                    org="Cryptographic Society"
                     year="2024"
                     desc="Demonstrated rapid problem-solving and digital forensic analysis skills under time pressure. Specialized in steganography challenges."
                     delay={0.2}
@@ -64,7 +73,7 @@ const Achievements = () => {
                 <AchievementItem
                     title="NITE CTF"
                     rank="Top Tier Participant"
-                    org={<span>Team Leader @ <a href="https://xaenithra.com" target="_blank" className="text-neon-cyan hover:underline">Xaenithra</a> | NIT Trichy</span>}
+                    org="NIT Trichy"
                     year="2024"
                     desc="Collaborated on high-intensity binary exploitation challenges. Secured critical flags in the final hours of the event."
                     delay={0.3}
