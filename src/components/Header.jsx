@@ -29,16 +29,6 @@ const Header = () => {
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-void-purple/20 rounded-full blur-[100px] pointer-events-none animate-pulse-slow" />
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] bg-neon-violet/10 rounded-full blur-[80px] pointer-events-none mix-blend-screen" />
 
-            {/* User Profile Hero Integration */}
-            <div className="absolute inset-0 z-0 flex items-center justify-center opacity-40 mix-blend-lighten pointer-events-none overflow-hidden">
-                <img
-                    src="/assets/profile.png"
-                    alt="Utkarsh Pratham"
-                    className="w-full h-full object-cover md:object-contain scale-110 md:scale-90 mask-image-b-fade opacity-80"
-                    style={{ maskImage: 'linear-gradient(to bottom, black 20%, transparent 100%)' }}
-                />
-            </div>
-
             {/* HUD Elements */}
             <div className="absolute top-10 w-full max-w-7xl flex justify-between items-center px-6 text-xs font-mono text-neon-cyan/50 tracking-widest uppercase opacity-70 z-10">
                 <div className="flex items-center gap-2">
@@ -53,7 +43,27 @@ const Header = () => {
             </div>
 
             {/* Main Content */}
-            <div className="relative group">
+            <div className="relative group flex flex-col items-center">
+
+                {/* Holographic Avatar */}
+                <motion.div
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    className="relative w-48 h-48 md:w-56 md:h-56 mb-8 rounded-full p-1 bg-gradient-to-tr from-neon-cyan via-white to-neon-violet"
+                >
+                    <div className="absolute inset-0 rounded-full bg-neon-cyan blur-md opacity-50 animate-pulse"></div>
+                    <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-black bg-black">
+                        <img
+                            src="/assets/profile.png"
+                            alt="Utkarsh Pratham"
+                            className="w-full h-full object-cover"
+                        />
+                        {/* Scanline Overlay */}
+                        <div className="absolute inset-0 bg-[url('https://media.giphy.com/media/xT9IgkKL1SJV8kRrCE/giphy.gif')] opacity-10 mix-blend-overlay pointer-events-none"></div>
+                    </div>
+                </motion.div>
+
                 {/* Glitch Layers */}
                 <h1 className="text-6xl md:text-9xl font-display font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-500 mb-2 leading-none relative z-10">
                     {displayText}<span className="animate-pulse text-neon-cyan">_</span>
