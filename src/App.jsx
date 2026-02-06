@@ -1,13 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import CyberBackground from './components/CyberBackground';
-import AudioPlayer from './components/AudioPlayer';
 import Header from './components/Header';
-import About from './components/About';
-import Experience from './components/Experience';
 import Projects from './components/Projects';
-import Skills from './components/Skills';
-import Achievements from './components/Achievements';
-import Certifications from './components/Certifications';
+import GlobalEffects from './components/GlobalEffects';
+import BentoGrid from './components/BentoGrid'; // Added BentoGrid import
 
 const App = () => {
     const [loaded, setLoaded] = useState(false);
@@ -17,18 +13,15 @@ const App = () => {
     }, []);
 
     return (
-        <div className={`min-h-screen bg-cyber-950 text-white font-mono selection:bg-neon-pink/30 selection:text-white overflow-x-hidden transition-opacity duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`min-h-screen bg-cyber-950 text-white font-body selection:bg-neon-pink/30 selection:text-white overflow-x-hidden transition-opacity duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
             <CyberBackground />
+            <GlobalEffects />
             <AudioPlayer />
 
             <main className="relative z-10 container mx-auto px-6 py-12 max-w-6xl">
                 <Header />
-                <About />
-                <Experience />
+                <BentoGrid /> {/* Replaced multiple components with BentoGrid */}
                 <Projects />
-                <Achievements />
-                <Skills />
-                <Certifications />
 
                 {/* Volunteering Section - Simple Footer Style */}
                 <section className="border-t border-coffee-800 pt-12 pb-24 text-center">

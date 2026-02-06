@@ -25,8 +25,9 @@ export default {
                 }
             },
             fontFamily: {
-                mono: ['"JetBrains Mono"', 'monospace'],
-                display: ['"Courier New"', 'monospace'],
+                mono: ['"Space Mono"', 'monospace'],
+                display: ['Orbitron', 'sans-serif'],
+                body: ['Syne', 'sans-serif'],
             },
             animation: {
                 'scanline': 'scanline 8s linear infinite',

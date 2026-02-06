@@ -18,7 +18,7 @@ const CyberBackground = () => {
 
     // Particles
     const particles = [];
-    const particleCount = 120; // Slightly less dense for cleaner look
+    const particleCount = 200; // Increased density for a richer look
 
     // Colors: Neon Cyan, Neon Pink, Deep Purple, White
     const colors = ['#00F0FF', '#FF003C', '#BD00FF', '#FFFFFF'];
@@ -31,19 +31,19 @@ const CyberBackground = () => {
       reset() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2; // Varying small sizes
-        this.speedX = Math.random() * 0.4 - 0.2;
-        this.speedY = Math.random() * 0.4 - 0.2;
+        this.size = Math.random() * 3 + 0.5; // Varying small to medium sizes
+        this.speedX = Math.random() * 0.6 - 0.3; // Slightly faster movement
+        this.speedY = Math.random() * 0.6 - 0.3;
         this.color = colors[Math.floor(Math.random() * colors.length)];
-        this.opacity = Math.random() * 0.5 + 0.1;
-        this.life = Math.random() * 100 + 100;
+        this.opacity = Math.random() * 0.7 + 0.2; // Higher base opacity
+        this.life = Math.random() * 150 + 150; // Longer lifespan
       }
 
       update() {
         this.x += this.speedX;
         this.y += this.speedY;
         this.life--;
-        this.opacity = Math.min(this.life / 50, this.opacity); // Fade out
+        this.opacity = Math.min(this.life / 75, this.opacity); // Fade out more gradually
 
         // Wrap around screen
         if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height || this.life < 0) {
@@ -54,7 +54,7 @@ const CyberBackground = () => {
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.shadowBlur = 10;
+        ctx.shadowBlur = 15; // Increased blur for more glow
         ctx.shadowColor = this.color;
         ctx.fillStyle = this.color;
         ctx.globalAlpha = this.opacity;
@@ -81,13 +81,13 @@ const CyberBackground = () => {
       });
 
       // Random "Cyber Glitch" Horizontal Lines - Neon Cyan
-      if (Math.random() > 0.97) {
+      if (Math.random() > 0.95) { // More frequent glitches
         const y = Math.random() * canvas.height;
-        const h = Math.random() * 2 + 1;
+        const h = Math.random() * 3 + 1; // Thicker glitches
         const w = Math.random() * canvas.width;
         const x = Math.random() * canvas.width;
 
-        ctx.fillStyle = 'rgba(0, 240, 255, 0.05)'; // Neon Cyan weak
+        ctx.fillStyle = 'rgba(0, 240, 255, 0.1)'; // Neon Cyan stronger
         ctx.fillRect(x, y, w, h);
       }
 
