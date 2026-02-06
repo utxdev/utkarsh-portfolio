@@ -84,56 +84,61 @@ const BentoGrid = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-6 auto-rows-[minmax(180px,auto)]">
 
                 {/* 1. Identity Node (Large) */}
-                <TiltCard className="md:col-span-2 md:row-span-2 h-full">
+                <TiltCard className="md:col-span-2 md:row-span-2 h-full min-h-[300px]">
                     <div className="absolute top-0 right-0 p-32 bg-neon-purple/20 blur-[80px] rounded-full pointer-events-none mix-blend-screen" />
-                    <div className="space-y-4">
-                        <div className="flex items-center gap-2 text-neon-cyan font-mono text-xs tracking-widest">
-                            <Terminal size={14} /> IDENTITY_VERIFIED
+                    <div className="space-y-6 relative z-10">
+                        <div className="flex items-center gap-2 text-neon-cyan font-mono text-sm tracking-widest border-b border-neon-cyan/20 pb-2 w-fit">
+                            <Terminal size={16} /> IDENTITY_VERIFIED
                         </div>
-                        <h3 className="text-3xl font-display font-bold text-white leading-tight">
-                            <span className="text-neon-pink">Offensive Security</span> Researcher & <span className="text-neon-violet">Creative Dev</span>
+                        <h3 className="text-4xl md:text-5xl font-display font-bold text-white leading-tight">
+                            <span className="text-neon-pink drop-shadow-[0_0_10px_rgba(255,0,255,0.5)]">Offensive Security</span> <br />
+                            Researcher & <span className="text-neon-violet drop-shadow-[0_0_10px_rgba(125,249,255,0.5)]">Creative Dev</span>
                         </h3>
-                        <p className="text-gray-400 leading-relaxed font-body">
-                            Specializing in <span className="text-white">OSINT</span>, <span className="text-white">Digital Forensics</span>, and <span className="text-white">Web Exploitation</span>.
-                            I don't just build systems; I dissect them to understand their deepest vulnerabilities.
+                        <p className="text-gray-300 text-lg leading-relaxed font-body max-w-lg">
+                            Specializing in <strong className="text-white">OSINT</strong>, <strong className="text-white">Digital Forensics</strong>, and <strong className="text-white">Web Exploitation</strong>.
+                            Dissecting systems to secure the future.
                         </p>
                     </div>
 
-                    <div className="mt-8 flex flex-wrap gap-2">
-                        <span className="px-3 py-1 rounded-full bg-void-purple border border-neon-cyan/30 text-xs text-neon-cyan font-mono shadow-[0_0_10px_rgba(0,240,255,0.3)]">Rank 1 SVNIT MeitY</span>
-                        <span className="px-3 py-1 rounded-full bg-void-purple border border-neon-purple/30 text-xs text-neon-purple font-mono">IIT Madras Finalist</span>
+                    <div className="mt-8 flex flex-wrap gap-3 relative z-10">
+                        <span className="px-4 py-1.5 rounded bg-neon-cyan/10 border border-neon-cyan text-sm text-neon-cyan font-mono shadow-[0_0_15px_rgba(0,240,255,0.2)] font-bold">
+                            🏆 Rank 1 @ SVNIT MeitY
+                        </span>
+                        <span className="px-4 py-1.5 rounded bg-neon-purple/10 border border-neon-purple text-sm text-neon-purple font-mono font-bold">
+                            🏅 IIT Madras Finalist
+                        </span>
                     </div>
                 </TiltCard>
 
                 {/* 2. Status Node */}
-                <TiltCard className="md:col-span-1 md:row-span-1">
-                    <div className="flex justify-between items-start">
-                        <div className="p-3 bg-neon-cyan/10 rounded-xl text-neon-cyan border border-neon-cyan/20">
-                            <MapPin size={20} />
+                <TiltCard className="md:col-span-1 md:row-span-1 min-h-[180px]">
+                    <div className="flex justify-between items-start mb-4">
+                        <div className="p-3 bg-neon-cyan/10 rounded-xl text-neon-cyan border border-neon-cyan/20 box-glow-cyan">
+                            <MapPin size={24} />
                         </div>
-                        <div className="flex items-center gap-1.5">
+                        <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-green-500/10 border border-green-500/30">
                             <span className="relative flex h-2 w-2">
                                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
                                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
                             </span>
-                            <span className="text-xs text-green-400 font-mono tracking-wider">AVAILABLE</span>
+                            <span className="text-xs text-green-400 font-mono tracking-wider font-bold">AVAILABLE</span>
                         </div>
                     </div>
                     <div>
-                        <div className="text-2xl font-bold text-white mt-4">New Delhi</div>
-                        <div className="text-xs text-gray-500 font-mono mt-1">lat: 28.6139° N</div>
+                        <div className="text-3xl font-bold text-white tracking-tight">New Delhi</div>
+                        <div className="text-sm text-gray-400 font-mono mt-1">lat: 28.6139° N</div>
                     </div>
                 </TiltCard>
 
                 {/* 3. Tech Stack Marquee */}
-                <TiltCard className="md:col-span-1 md:row-span-2 overflow-hidden">
-                    <div className="flex items-center gap-2 text-neon-pink font-mono text-xs tracking-widest mb-6">
+                <TiltCard className="md:col-span-1 md:row-span-2 overflow-hidden flex flex-col">
+                    <div className="flex items-center gap-2 text-neon-pink font-mono text-xs tracking-widest mb-4 border-b border-neon-pink/20 pb-2">
                         <Cpu size={14} /> ARSENAL
                     </div>
-                    <div className="relative h-full overflow-hidden mask-gradient-y">
-                        <div className="animate-marquee-vertical flex flex-col gap-4">
+                    <div className="relative flex-grow overflow-hidden mask-gradient-y">
+                        <div className="animate-marquee-vertical flex flex-col gap-3">
                             {[...skills, ...skills].map((skill, i) => (
-                                <div key={i} className="text-xl font-display font-bold text-gray-700 uppercase hover:text-white transition-colors cursor-default select-none">
+                                <div key={i} className="text-xl font-display font-bold text-gray-500 uppercase hover:text-white hover:pl-2 transition-all cursor-default select-none">
                                     {skill}
                                 </div>
                             ))}
@@ -142,16 +147,15 @@ const BentoGrid = () => {
                 </TiltCard>
 
                 {/* 4. Mission Logs (Achievements) */}
-                <TiltCard className="md:col-span-1 md:row-span-1 overflow-y-auto custom-scrollbar">
-                    <div className="flex items-center gap-2 text-neon-violet font-mono text-xs tracking-widest mb-4">
+                <TiltCard className="md:col-span-1 md:row-span-1 overflow-y-auto custom-scrollbar min-h-[200px]">
+                    <div className="flex items-center gap-2 text-neon-violet font-mono text-xs tracking-widest mb-4 border-b border-neon-violet/20 pb-2">
                         <Award size={14} /> MISSION_LOGS
                     </div>
-                    <div className="space-y-4">
+                    <div className="space-y-3">
                         {missions.map((mission, i) => (
-                            <div key={i} className="flex flex-col border-l border-white/10 pl-3">
-                                <span className="text-white font-bold text-sm">{mission.name}</span>
-                                <span className="text-xs text-neon-pink font-mono">{mission.rank}</span>
-                                <span className="text-[10px] text-gray-500">{mission.desc}</span>
+                            <div key={i} className="group flex flex-col bg-white/5 p-3 rounded hover:bg-white/10 transition-colors border-l-2 border-transparent hover:border-neon-pink">
+                                <span className="text-white font-bold text-sm tracking-tight">{mission.name}</span>
+                                <span className="text-xs text-neon-pink font-mono mt-1">{mission.rank}</span>
                             </div>
                         ))}
                     </div>

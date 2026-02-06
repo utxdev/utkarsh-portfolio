@@ -5,32 +5,6 @@ import { Layout, GitBranch, ExternalLink, Search, Shield, Database, Terminal, Gl
 const ProjectCard = ({ project, index }) => {
     const ref = useRef(null);
 
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const mouseXSpring = useSpring(x);
-    const mouseYSpring = useSpring(y);
-
-    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["17.5deg", "-17.5deg"]);
-    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-17.5deg", "17.5deg"]);
-
-    const handleMouseMove = (e) => {
-        const rect = ref.current.getBoundingClientRect();
-        const width = rect.width;
-        const height = rect.height;
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
-        const xPct = mouseX / width - 0.5;
-        const yPct = mouseY / height - 0.5;
-        x.set(xPct);
-        y.set(yPct);
-    };
-
-    const handleMouseLeave = () => {
-        x.set(0);
-        y.set(0);
-    };
-
     return (
         <motion.div
             ref={ref}
@@ -38,58 +12,50 @@ const ProjectCard = ({ project, index }) => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
             viewport={{ once: true }}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{
-                rotateY,
-                rotateX,
-                transformStyle: "preserve-3d",
-            }}
-            className="relative w-full h-full rounded-xl transition-colors group cursor-pointer perspective-1000"
+            className="group relative w-full rounded-2xl bg-cyber-glass border border-white/10 hover:border-neon-cyan/50 transition-all duration-500 overflow-hidden flex flex-col md:flex-row h-auto md:h-[280px]"
         >
-            {/* Base Glass Layer & Holographic Effect */}
-            <div className={`
-                absolute inset-0 rounded-xl bg-cyber-glass backdrop-blur-xl border border-white/10 shadow-lg
-                group-hover:shadow-[0_0_30px_rgba(189,0,255,0.15)] transition-shadow duration-500
-                overflow-hidden z-0
-            `} style={{ transform: "translateZ(0px)" }}>
-                <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/10 group-hover:ring-white/20" />
-                <div className="absolute -inset-[1px] rounded-xl bg-gradient-to-r from-neon-purple via-neon-cyan to-neon-violet opacity-0 group-hover:opacity-30 blur-sm transition-opacity duration-500" />
+            {/* Image Section */}
+            <div className="w-full md:w-2/5 h-48 md:h-full relative overflow-hidden">
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent z-10" />
+                <div className="absolute inset-0 bg-neon-purple/20 mix-blend-overlay z-10 group-hover:bg-transparent transition-colors duration-500" />
+                <img
+                    src={project.img}
+                    alt={project.title}
+                    className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
+                />
             </div>
 
-            <div
-                style={{ transform: "translateZ(50px)" }}
-                className="relative flex flex-col h-full p-6 z-10"
-            >
-                <div className="flex justify-between items-start mb-6">
-                    <div className="p-3 bg-neon-cyan/10 rounded-lg text-neon-cyan border border-neon-cyan/20">
-                        {project.icon}
+            {/* Content Section */}
+            <div className="flex-1 p-6 flex flex-col relative z-20">
+                {/* Decorative background grid */}
+                <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none" />
+
+                <div className="flex justify-between items-start mb-4">
+                    <div className="flex items-center gap-2">
+                        <div className="p-2 bg-neon-cyan/10 rounded-lg text-neon-cyan">
+                            {project.icon}
+                        </div>
+                        <h3 className="text-2xl font-display font-bold text-white tracking-tight group-hover:text-neon-cyan transition-colors">
+                            {project.title}
+                        </h3>
                     </div>
-                    <div className="flex gap-3">
+
+                    <div className="flex gap-2">
                         {project.links.github && (
-                            <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-white/10 rounded-full transition-colors text-gray-400 hover:text-white z-20" title="View Code">
+                            <a href={project.links.github} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-white/10 rounded-full text-gray-400 hover:text-white transition-colors">
                                 <GitBranch size={18} />
-                            </a>
-                        )}
-                        {project.links.live && (
-                            <a href={project.links.live} target="_blank" rel="noopener noreferrer" className="p-2 hover:bg-white/10 rounded-full transition-colors text-gray-400 hover:text-white z-20" title="Live Demo">
-                                <ExternalLink size={18} />
                             </a>
                         )}
                     </div>
                 </div>
 
-                <h3 className="text-2xl font-display font-bold text-white mb-3 group-hover:text-neon-cyan transition-colors transform-gpu">
-                    {project.title}
-                </h3>
-
-                <p className="text-gray-400 text-sm mb-6 flex-grow leading-relaxed">
+                <p className="text-gray-400 text-sm leading-relaxed mb-6 flex-grow border-l-2 border-neon-purple/20 pl-4">
                     {project.desc}
                 </p>
 
                 <div className="flex flex-wrap gap-2 mt-auto">
                     {project.tech.map((t, i) => (
-                        <span key={i} className="px-2 py-1 text-xs font-mono text-neon-violet border border-neon-violet/30 rounded bg-neon-violet/5">
+                        <span key={i} className="px-2 py-1 text-[10px] font-mono uppercase text-neon-violet border border-neon-violet/20 rounded bg-neon-violet/5">
                             {t}
                         </span>
                     ))}
@@ -102,50 +68,55 @@ const ProjectCard = ({ project, index }) => {
 const Projects = () => {
     const projects = [
         {
-            title: "XAENITHRA_PS6",
-            desc: "Advanced PowerShell investigation \u0026 forensic data extraction tool for active incident response.",
+            title: "TRINETRA",
+            desc: "Advanced PowerShell investigation & forensic data extraction tool for active incident response.",
             tech: ["PowerShell", "Forensics", "Live Analysis"],
-            icon: <Terminal size={24} />,
+            icon: <Terminal size={20} />,
+            img: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&q=80&w=1000",
             links: { github: "https://github.com/utxdev/Xaenithra-ps6-investigation", live: "#" }
         },
         {
             title: "CYBER_ECOSYSTEM",
             desc: "Comprehensive cybersecurity awareness platform featuring 11+ interactive tools (Steganography, OSINT, etc).",
             tech: ["React", "Vite", "Cyber Tools"],
-            icon: <Globe size={24} />,
+            icon: <Globe size={20} />,
+            img: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&q=80&w=1000",
             links: { github: "https://github.com/utxdev/cyber-ecosystem", live: "#" }
         },
         {
             title: "XAENITHRA_ENC",
             desc: "Custom encryption/encoding framework for secure communication and payload obfuscation.",
             tech: ["Python", "Cryptography", "Obfuscation"],
-            icon: <Shield size={24} />,
+            icon: <Shield size={20} />,
+            img: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&q=80&w=1000",
             links: { github: "https://github.com/utxdev/Xaenithra-Encoded", live: "#" }
         },
         {
             title: "PATHFINDER",
             desc: "Network reconnaissance and vulnerability mapping utility for automated pentesting workflows.",
             tech: ["Go", "Network Scanning", "Automation"],
-            icon: <Search size={24} />,
+            icon: <Search size={20} />,
+            img: "https://images.unsplash.com/photo-1558494949-efc5e60dc3bd?auto=format&fit=crop&q=80&w=1000",
             links: { github: "https://github.com/utxdev", live: "#" }
         },
         {
             title: "COMPANIO",
             desc: "AI-driven security assistant for real-time threat monitoring and log analysis.",
             tech: ["AI/ML", "Python", "Log Analysis"],
-            icon: <Database size={24} />,
+            icon: <Database size={20} />,
+            img: "https://images.unsplash.com/photo-1535378437327-10f797d1901a?auto=format&fit=crop&q=80&w=1000",
             links: { github: "https://github.com/utxdev", live: "#" }
         }
     ];
 
     return (
-        <section className="container mx-auto px-4 py-20 max-w-7xl">
+        <section className="container mx-auto px-4 py-24 max-w-7xl">
             <div className="flex items-center gap-4 mb-16 border-b border-white/10 pb-4">
                 <Layout className="text-neon-cyan" size={32} />
                 <h3 className="text-3xl font-display font-bold text-white text-glow-cyan">PROJECT_MODULES</h3>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="flex flex-col gap-8">
                 {projects.map((p, i) => (
                     <ProjectCard key={i} project={p} index={i} />
                 ))}
