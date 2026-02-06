@@ -17,8 +17,8 @@ const SocialLink = ({ href, icon: Icon, label, username, delay }) => (
             <Icon size={24} />
         </div>
         <div className="flex flex-col">
-            <span className="text-xs font-mono text-gray-500 uppercase tracking-wider group-hover:text-neon-cyan transition-colors">{label}</span>
-            <span className="text-white font-bold font-display tracking-wide">{username}</span>
+            <span className="text-sm font-bold text-white group-hover:text-neon-cyan transition-colors">{label}</span>
+            <span className="text-xs font-mono text-gray-400">{username}</span>
         </div>
         <ExternalLink size={16} className="ml-auto text-gray-600 group-hover:text-neon-cyan opacity-0 group-hover:opacity-100 transition-all" />
     </motion.a>
@@ -50,28 +50,28 @@ const Connect = () => {
                     <SocialLink
                         href="https://github.com/utxdev"
                         icon={Github}
-                        label="Code Repository"
+                        label="GitHub"
                         username="@utxdev"
                         delay={0.1}
                     />
                     <SocialLink
                         href="https://linkedin.com/in/utkarsh-pratham"
                         icon={Linkedin}
-                        label="Professional Network"
+                        label="LinkedIn"
                         username="Utkarsh Pratham"
                         delay={0.2}
                     />
                     <SocialLink
                         href="https://instagram.com/xivtx"
                         icon={Instagram}
-                        label="Visual Log"
+                        label="Instagram"
                         username="@xivtx"
                         delay={0.3}
                     />
                     <SocialLink
                         href="mailto:utx1zz@gmail.com"
                         icon={Mail}
-                        label="Direct Encrypted Mail"
+                        label="Email"
                         username="utx1zz@gmail.com"
                         delay={0.4}
                     />
