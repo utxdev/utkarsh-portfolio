@@ -117,8 +117,8 @@ const BentoGrid = () => {
                 </BentoCard>
 
                 {/* 5. Mission Objective - Tactical Terminal */}
-                <BentoCard className="md:col-span-4 md:row-span-1 min-h-[200px] bg-black border border-neon-cyan/20">
-                    <div className="h-full flex flex-col justify-between font-mono relative overflow-hidden">
+                <div className="md:col-span-4 md:row-span-1 min-h-[200px] bg-black border border-neon-cyan/20 relative overflow-hidden rounded-3xl group hover:border-neon-cyan/40 hover:shadow-[0_0_30px_rgba(0,240,255,0.15)] transition-all duration-500">
+                    <div className="h-full flex flex-col justify-between font-mono relative overflow-hidden p-8">
                         {/* Terminal Header */}
                         <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
                             <div className="flex gap-2">
@@ -153,7 +153,7 @@ const BentoGrid = () => {
                             ./ROOT
                         </div>
                     </div>
-                </BentoCard>
+                </div>
 
             </div>
         </section>
