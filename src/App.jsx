@@ -9,6 +9,7 @@ import BentoGrid from './components/BentoGrid';
 import Credentials from './components/Credentials';
 import CyberOverlay from './components/CyberOverlay';
 import AudioPlayer from './components/AudioPlayer';
+import Achievements from './components/Achievements';
 
 const App = () => {
     const [loaded, setLoaded] = useState(false);
