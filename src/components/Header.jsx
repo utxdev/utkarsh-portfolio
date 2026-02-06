@@ -3,202 +3,159 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { Terminal, MapPin, Mail, ChevronDown, Code, Hash, Power, Shield, Download } from 'lucide-react';
 
 const Header = () => {
-    // ... (existing code ranges)
+    const { scrollY } = useScroll();
+    const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+    const scale = useTransform(scrollY, [0, 300], [1, 0.8]);
+
+    const [displayText, setDisplayText] = useState("");
+    const fullName = "UTKARSH PRATHAM";
+
+    useEffect(() => {
+        let i = 0;
+        const interval = setInterval(() => {
+            setDisplayText(fullName.slice(0, i));
+            i++;
+            if (i > fullName.length) clearInterval(interval);
+        }, 100);
+        return () => clearInterval(interval);
+    }, []);
 
     return (
-        // ...
-        {/* Primary Action */ }
-        < motion.div
-                initial = {{ opacity: 0, scale: 0.9 }
-}
-animate = {{ opacity: 1, scale: 1 }}
-transition = {{ delay: 2 }}
-className = "mt-16"
-    >
-    <div className="flex flex-col md:flex-row gap-6 items-center">
-        <a
-            href="#profile"
-            onClick={(e) => {
-                e.preventDefault();
-                document.getElementById('profile').scrollIntoView({ behavior: 'smooth' });
-            }}
-            className="relative inline-flex items-center justify-center px-10 py-4 overflow-hidden font-display font-bold text-white transition-all duration-300 bg-transparent border border-neon-violet/50 hover:bg-neon-violet/10 group"
+        <motion.header
+            style={{ opacity, scale }}
+            className="relative min-h-screen flex flex-col justify-center items-center text-center z-20 perspective-1000"
         >
-            <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-neon-violet rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
-            <span className="relative flex items-center gap-3 text-neon-violet group-hover:text-white transition-colors">
-                <Terminal size={20} />
-                INITIALIZE_PROFILE
-            </span>
+            {/* Ambient Background Glows */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-void-purple/20 rounded-full blur-[100px] pointer-events-none animate-pulse-slow" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] bg-neon-violet/10 rounded-full blur-[80px] pointer-events-none mix-blend-screen" />
 
-            {/* Corners */}
-            <span className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-neon-cyan"></span>
-            <span className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-neon-cyan"></span>
-            <span className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-neon-cyan"></span>
-            <span className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-neon-cyan"></span>
-        </a>
-
-        <a
-            href="/assets/resume.pdf"
-            download="Utkarsh_Pratham_Resume.pdf"
-            className="flex items-center gap-3 px-8 py-4 rounded-none border border-neon-cyan bg-neon-cyan/10 text-neon-cyan font-bold font-display hover:bg-neon-cyan hover:text-black hover:shadow-[0_0_30px_rgba(0,240,255,0.6)] transition-all duration-300 backdrop-blur-md"
-        >
-            <Download size={20} />
-            <span>DOWNLOAD_RESUME</span>
-        </a>
-    </div>
-            </motion.div >
-    const opacity = useTransform(scrollY, [0, 300], [1, 0]);
-const scale = useTransform(scrollY, [0, 300], [1, 0.8]);
-
-const [displayText, setDisplayText] = useState("");
-const fullName = "UTKARSH PRATHAM";
-
-useEffect(() => {
-    let i = 0;
-    const interval = setInterval(() => {
-        setDisplayText(fullName.slice(0, i));
-        i++;
-        if (i > fullName.length) clearInterval(interval);
-    }, 100);
-    return () => clearInterval(interval);
-}, []);
-
-return (
-    <motion.header
-        style={{ opacity, scale }}
-        className="relative min-h-screen flex flex-col justify-center items-center text-center z-20 perspective-1000"
-    >
-        {/* Ambient Background Glows */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-void-purple/20 rounded-full blur-[100px] pointer-events-none animate-pulse-slow" />
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] bg-neon-violet/10 rounded-full blur-[80px] pointer-events-none mix-blend-screen" />
-
-        {/* HUD Elements */}
-        <div className="absolute top-10 w-full max-w-7xl flex justify-between items-center px-6 text-xs font-mono text-neon-cyan/50 tracking-widest uppercase opacity-70 z-10">
-            <div className="flex items-center gap-2">
-                <Power size={14} className="text-neon-pink animate-pulse" />
-                <span>System: Online</span>
+            {/* HUD Elements */}
+            <div className="absolute top-10 w-full max-w-7xl flex justify-between items-center px-6 text-xs font-mono text-neon-cyan/50 tracking-widest uppercase opacity-70 z-10">
+                <div className="flex items-center gap-2">
+                    <Power size={14} className="text-neon-pink animate-pulse" />
+                    <span>System: Online</span>
+                </div>
+                <div className="flex gap-4">
+                    <span>OPS: OFFENSIVE</span>
+                    <span>NET: SECURE</span>
+                </div>
+                <div>v2.1.0</div>
             </div>
-            <div className="flex gap-4">
-                <span>OPS: OFFENSIVE</span>
-                <span>NET: SECURE</span>
-            </div>
-            <div>v2.1.0</div>
-        </div>
 
-        {/* Main Content */}
-        <div className="relative group flex flex-col items-center">
+            {/* Main Content */}
+            <div className="relative group flex flex-col items-center">
 
-            {/* Holographic Avatar */}
-            {/* Holographic Avatar with Breathing Animation */}
-            <motion.div
-                animate={{ y: [-10, 10, -10] }}
-                transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
-            >
+                {/* Holographic Avatar with Breathing Animation */}
                 <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="relative w-48 h-48 md:w-56 md:h-56 mb-8 rounded-full p-1 bg-gradient-to-tr from-neon-cyan via-white to-neon-violet shadow-[0_0_50px_rgba(139,92,246,0.3)]"
+                    animate={{ y: [-10, 10, -10] }}
+                    transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
                 >
-                    <div className="absolute inset-0 rounded-full bg-neon-cyan blur-md opacity-50 animate-pulse"></div>
-                    <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-black bg-black shadow-[inset_0_0_20px_rgba(0,240,255,0.2)]">
-                        <img
-                            src="/assets/profile.png?v=updated"
-                            alt="Utkarsh Pratham"
-                            className="w-full h-full object-cover brightness-110 contrast-110"
-                        />
-                        {/* Scanline Overlay - Reduced Opacity */}
-                        <div className="absolute inset-0 bg-[url('https://media.giphy.com/media/xT9IgkKL1SJV8kRrCE/giphy.gif')] opacity-5 mix-blend-overlay pointer-events-none"></div>
-                    </div>
+                    <motion.div
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="relative w-48 h-48 md:w-56 md:h-56 mb-8 rounded-full p-1 bg-gradient-to-tr from-neon-cyan via-white to-neon-violet shadow-[0_0_50px_rgba(139,92,246,0.3)]"
+                    >
+                        <div className="absolute inset-0 rounded-full bg-neon-cyan blur-md opacity-50 animate-pulse"></div>
+                        <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-black bg-black shadow-[inset_0_0_20px_rgba(0,240,255,0.2)]">
+                            <img
+                                src="/assets/profile.png?v=updated"
+                                alt="Utkarsh Pratham"
+                                className="w-full h-full object-cover brightness-110 contrast-110"
+                            />
+                            {/* Scanline Overlay - Reduced Opacity */}
+                            <div className="absolute inset-0 bg-[url('https://media.giphy.com/media/xT9IgkKL1SJV8kRrCE/giphy.gif')] opacity-5 mix-blend-overlay pointer-events-none"></div>
+                        </div>
+                    </motion.div>
                 </motion.div>
+
+                {/* Glitch Layers */}
+                <h1 className="text-6xl md:text-9xl font-display font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-500 mb-2 leading-none relative z-10">
+                    {displayText}<span className="animate-pulse text-neon-cyan">_</span>
+                </h1>
+
+                {/* Cyber Reflection */}
+                <h1 className="absolute top-full left-0 w-full text-6xl md:text-9xl font-display font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-t from-neon-violet/20 to-transparent scale-y-[-0.5] blur-sm opacity-50 pointer-events-none">
+                    {displayText}
+                </h1>
+            </div>
+
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.5 }}
+                className="mt-8 flex flex-col items-center gap-6"
+            >
+                {/* Role Badge */}
+                <div className="px-6 py-2 rounded-none border-x border-neon-cyan/50 bg-black/40 backdrop-blur-sm flex items-center gap-3 shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+                    <Shield size={16} className="text-neon-violet" />
+                    <span className="text-neon-cyan font-mono text-sm tracking-[0.2em] uppercase">Cybersecurity Specialist</span>
+                    <Hash size={16} className="text-neon-violet" />
+                </div>
+
+                <div className="flex gap-8 text-gray-400 font-mono text-xs md:text-sm tracking-widest">
+                    <span className="flex items-center gap-2 hover:text-white transition-colors cursor-crosshair">
+                        <MapPin size={14} className="text-neon-pink" />
+                        [LOC]: NEW DELHI
+                    </span>
+                    <a href="mailto:utx1zz@gmail.com" className="flex items-center gap-2 hover:text-neon-cyan transition-colors cursor-pointer group">
+                        <Mail size={14} className="text-neon-pink group-hover:animate-bounce" />
+                        [MAIL]: UTX1ZZ@GMAIL.COM
+                    </a>
+                </div>
             </motion.div>
 
-            {/* Glitch Layers */}
-            <h1 className="text-6xl md:text-9xl font-display font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-500 mb-2 leading-none relative z-10">
-                {displayText}<span className="animate-pulse text-neon-cyan">_</span>
-            </h1>
+            {/* Primary Action */}
+            <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 2 }}
+                className="mt-16"
+            >
+                <div className="flex flex-col md:flex-row gap-6 items-center">
+                    <a
+                        href="#profile"
+                        onClick={(e) => {
+                            e.preventDefault();
+                            document.getElementById('profile').scrollIntoView({ behavior: 'smooth' });
+                        }}
+                        className="relative inline-flex items-center justify-center px-10 py-4 overflow-hidden font-display font-bold text-white transition-all duration-300 bg-transparent border border-neon-violet/50 hover:bg-neon-violet/10 group"
+                    >
+                        <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-neon-violet rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
+                        <span className="relative flex items-center gap-3 text-neon-violet group-hover:text-white transition-colors">
+                            <Terminal size={20} />
+                            INITIALIZE_PROFILE
+                        </span>
 
-            {/* Cyber Reflection */}
-            <h1 className="absolute top-full left-0 w-full text-6xl md:text-9xl font-display font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-t from-neon-violet/20 to-transparent scale-y-[-0.5] blur-sm opacity-50 pointer-events-none">
-                {displayText}
-            </h1>
-        </div>
+                        {/* Corners */}
+                        <span className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-neon-cyan"></span>
+                        <span className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-neon-cyan"></span>
+                        <span className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-neon-cyan"></span>
+                        <span className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-neon-cyan"></span>
+                    </a>
 
-        <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.5 }}
-            className="mt-8 flex flex-col items-center gap-6"
-        >
-            {/* Role Badge */}
-            <div className="px-6 py-2 rounded-none border-x border-neon-cyan/50 bg-black/40 backdrop-blur-sm flex items-center gap-3 shadow-[0_0_15px_rgba(0,240,255,0.2)]">
-                <Shield size={16} className="text-neon-violet" />
-                <span className="text-neon-cyan font-mono text-sm tracking-[0.2em] uppercase">Cybersecurity Specialist</span>
-                <Hash size={16} className="text-neon-violet" />
-            </div>
+                    <a
+                        href="/assets/resume.pdf"
+                        download="Utkarsh_Pratham_Resume.pdf"
+                        className="flex items-center gap-3 px-8 py-4 rounded-none border border-neon-cyan bg-neon-cyan/10 text-neon-cyan font-bold font-display hover:bg-neon-cyan hover:text-black hover:shadow-[0_0_30px_rgba(0,240,255,0.6)] transition-all duration-300 backdrop-blur-md"
+                    >
+                        <Download size={20} />
+                        <span>DOWNLOAD_RESUME</span>
+                    </a>
+                </div>
+            </motion.div>
 
-            <div className="flex gap-8 text-gray-400 font-mono text-xs md:text-sm tracking-widest">
-                <span className="flex items-center gap-2 hover:text-white transition-colors cursor-crosshair">
-                    <MapPin size={14} className="text-neon-pink" />
-                    [LOC]: NEW DELHI
-                </span>
-                <a href="mailto:utx1zz@gmail.com" className="flex items-center gap-2 hover:text-neon-cyan transition-colors cursor-pointer group">
-                    <Mail size={14} className="text-neon-pink group-hover:animate-bounce" />
-                    [MAIL]: UTX1ZZ@GMAIL.COM
-                </a>
-            </div>
-        </motion.div>
-
-        {/* Primary Action */}
-        <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 2 }}
-            className="mt-16"
-        >
-            <div className="flex flex-col md:flex-row gap-6 items-center">
-                <a
-                    href="#profile"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        document.getElementById('profile').scrollIntoView({ behavior: 'smooth' });
-                    }}
-                    className="relative inline-flex items-center justify-center px-10 py-4 overflow-hidden font-display font-bold text-white transition-all duration-300 bg-transparent border border-neon-violet/50 hover:bg-neon-violet/10 group"
-                >
-                    <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-neon-violet rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
-                    <span className="relative flex items-center gap-3 text-neon-violet group-hover:text-white transition-colors">
-                        <Terminal size={20} />
-                        INITIALIZE_PROFILE
-                    </span>
-
-                    {/* Corners */}
-                    <span className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-neon-cyan"></span>
-                    <span className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-neon-cyan"></span>
-                    <span className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-neon-cyan"></span>
-                    <span className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-neon-cyan"></span>
-                </a>
-
-                <a
-                    href="/assets/resume.pdf"
-                    download="Utkarsh_Pratham_Resume.pdf"
-                    className="flex items-center gap-2 text-sm font-mono text-gray-400 hover:text-neon-cyan transition-colors border-b border-transparent hover:border-neon-cyan/50 pb-1"
-                >
-                    [ DOWNLOAD_CV ]
-                </a>
-            </div>
-        </motion.div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 2.5, duration: 1 }}
-            className="absolute bottom-10 animate-bounce text-neon-cyan/50"
-        >
-            <ChevronDown size={24} />
-        </motion.div>
-    </motion.header>
-);
+            {/* Scroll Indicator */}
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 2.5, duration: 1 }}
+                className="absolute bottom-10 animate-bounce text-neon-cyan/50"
+            >
+                <ChevronDown size={24} />
+            </motion.div>
+        </motion.header>
+    );
 };
 
 export default Header;

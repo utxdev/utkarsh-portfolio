@@ -6,6 +6,7 @@ import TechArsenal from './components/TechArsenal';
 import Connect from './components/Connect';
 import GlobalEffects from './components/GlobalEffects';
 import BentoGrid from './components/BentoGrid';
+import Achievements from './components/Achievements';
 import AudioPlayer from './components/AudioPlayer';
 
 const App = () => {
@@ -24,6 +25,7 @@ const App = () => {
             <main className="relative z-10 w-full overflow-hidden">
                 <Header />
                 <BentoGrid />
+                <Achievements />
                 <TechArsenal />
                 <Projects />
                 <Connect />

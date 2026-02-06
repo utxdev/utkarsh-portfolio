@@ -1,63 +1,74 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Trophy, Shield, Cpu } from 'lucide-react';
+import { Trophy, Award, Target, Star, Shield } from 'lucide-react';
 
-const Achievements = () => {
-    const achievements = [
-        {
-            title: "SVNIT (NIT Surat) – Echelon Cybersecurity Hackathon",
-            rank: "Rank 1 (National) | Finalist",
-            desc: "Secured 1st rank at national level CTF under MeitY. Built and presented a cybersecurity-focused solution."
-        },
-        {
-            title: "Cipher Hunt 2.0 | 2025",
-            rank: "Global Rank 7",
-            desc: "Top 10 Global Cipher Hunt 2.0. Notable performance in Digital Forensics and Binary Exploitation skills."
-        },
-        {
-            title: "IIT Madras – Shaastra CTF | 2025",
-            rank: "National Finalist | Rank 6 (Quals)",
-            desc: "Competed in Cryptography and Web Exploitation domains against top national teams."
-        }
-    ];
-
-    return (
-        <section className="mb-32">
-            <div className="flex items-center gap-4 mb-12 border-b border-white/10 pb-4">
-                <Trophy className="text-neon-cyan" size={32} />
-                <h3 className="text-3xl font-bold text-white font-mono text-glow-cyan">MISSION_ACCOMPLISHMENTS</h3>
+const AchievementItem = ({ title, rank, org, desc, year, delay }) => (
+    <motion.div
+        initial={{ opacity: 0, x: -20 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        transition={{ delay, duration: 0.5 }}
+        className="group relative p-6 bg-white/5 border border-white/10 rounded-xl hover:bg-white/10 hover:border-neon-cyan/30 transition-all duration-300"
+    >
+        <div className="flex flex-col md:flex-row gap-6 items-start md:items-center">
+            <div className="flex-shrink-0 p-4 rounded-lg bg-neon-cyan/10 text-neon-cyan group-hover:bg-neon-cyan/20 group-hover:shadow-[0_0_15px_rgba(0,240,255,0.2)] transition-all">
+                <Trophy size={28} />
             </div>
 
-            <div className="grid md:grid-cols-2 gap-8">
-                {achievements.map((item, i) => (
-                    <motion.div
-                        key={i}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ delay: i * 0.1 }}
-                        className="group p-6 glass-card rounded-xl hover:border-neon-pink/50 hover:bg-white/5 transition-all duration-300 relative overflow-hidden"
-                    >
-                        <div className="absolute top-0 right-0 p-3 opacity-5 group-hover:opacity-10 transition-opacity">
-                            {i % 2 === 0 ? <Shield size={80} /> : <Cpu size={80} />}
-                        </div>
+            <div className="flex-1">
+                <div className="flex flex-wrap items-center gap-3 mb-1">
+                    <span className="text-xs font-mono text-gray-500 border border-white/10 px-2 py-0.5 rounded uppercase tracking-wider">{year}</span>
+                    <span className="text-xs font-bold text-neon-pink uppercase tracking-wider">{rank}</span>
+                </div>
+                <h3 className="text-xl font-display font-bold text-white mb-1 group-hover:text-neon-cyan transition-colors">{title}</h3>
+                <p className="text-sm font-mono text-neon-violet mb-2">{org}</p>
+                <p className="text-gray-400 text-sm max-w-2xl">{desc}</p>
+            </div>
 
-                        <div className="flex justify-between items-start mb-4 relative z-10">
-                            <span className="text-xs font-mono text-neon-cyan border border-neon-cyan/30 px-2 py-1 rounded bg-black/40">
-                                {item.rank}
-                            </span>
-                        </div>
+            <div className="hidden md:block">
+                <Shield size={18} className="text-gray-700 group-hover:text-neon-cyan/50 transition-colors" />
+            </div>
+        </div>
+    </motion.div>
+);
 
-                        <h4 className="text-xl font-bold text-white mb-3 group-hover:text-neon-pink transition-colors">
-                            {item.title}
-                        </h4>
+const Achievements = () => {
+    return (
+        <section className="container mx-auto px-4 py-12 max-w-6xl">
+            <div className="flex items-center gap-4 mb-12 border-b border-white/10 pb-6">
+                <Award size={32} className="text-neon-cyan" />
+                <h2 className="text-3xl font-display font-bold text-white">
+                    MISSION <span className="text-neon-violet">LOGS</span>
+                </h2>
+                <div className="ml-auto text-xs font-mono text-gray-500 hidden md:block">
+                    [CLASSIFIED RECORDS DECLASSIFIED]
+                </div>
+            </div>
 
-                        <p className="text-gray-400 text-sm leading-relaxed">
-                            {item.desc}
-                        </p>
-
-                        <div className="mt-4 w-full h-1 bg-gradient-to-r from-neon-pink/0 via-neon-pink/50 to-neon-pink/0 scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
-                    </motion.div>
-                ))}
+            <div className="grid grid-cols-1 gap-4">
+                <AchievementItem
+                    title="Shaastra CTF (National Finals)"
+                    rank="National Finalist (Rank 6 Quals / Rank 7 Finals)"
+                    org="IIT Madras"
+                    year="2025"
+                    desc="Top performer among hundreds of participants. Solved complex challenges in cryptography and web exploitation during the 24-hour hackathon."
+                    delay={0.1}
+                />
+                <AchievementItem
+                    title="Cipher Hunt 2.0"
+                    rank="Rank 7"
+                    org="Cryptographic Society"
+                    year="2024"
+                    desc="Demonstrated rapid problem-solving and digital forensic analysis skills under time pressure. Specialized in steganography challenges."
+                    delay={0.2}
+                />
+                <AchievementItem
+                    title="NITE CTF"
+                    rank="Top Tier Participant"
+                    org="NIT Trichy"
+                    year="2024"
+                    desc="Collaborated on high-intensity binary exploitation challenges. Secured critical flags in the final hours of the event."
+                    delay={0.3}
+                />
             </div>
         </section>
     );
