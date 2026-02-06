@@ -103,14 +103,14 @@ const Projects = () => {
     const projects = [
         {
             title: "TRINETRA",
-            desc: "Advanced OSINT & Cyber-Forensics framework used by law enforcement.",
-            tech: ["Python", "React", "Docker"],
+            desc: "Mobile Forensics Investigation Tool connected to court-admissible reporting.",
+            tech: ["Python", "React 18", "FastAPI", "ADB", "SHA-256"],
             icon: <Search size={24} />,
             links: { github: "#", live: "#" }
         },
         {
             title: "XAENITHRA",
-            desc: "Automated vulnerability scanner and pentesting suite.",
+            desc: "Automated vulnerability scanner and pentesting suite (Command Center).",
             tech: ["Go", "gRPC", "Next.js"],
             icon: <Shield size={24} />,
             links: { github: "#", live: "#" }

@@ -5,21 +5,22 @@ import { MapPin, Mail, Linkedin, Terminal, Cpu, Shield, Award, Briefcase, Gradua
 const BentoGrid = () => {
     // Data
     const skills = [
-        "C++", "Python", "JavaScript", "React", "Node.js",
-        "Burp Suite", "Metasploit", "Wireshark", "Linux",
-        "Docker", "AWS", "SQL"
+        "C++", "Python", "JavaScript", "TypeScript", "React", "Node.js",
+        "Burp Suite", "Metasploit", "Wireshark", "Linux", "Docker", "AWS",
+        "GenAI", "Prompt Engineering", "Forensics", "Web Security"
     ];
 
     const experience = [
-        { role: "Team Leader", org: "Xaenithra", date: "Present", active: true },
-        { role: "Core Team", org: "GirlScript", date: "2024" },
-        { role: "Member", org: "Defcon Delhi", date: "2024" }
+        { role: "Team Leader", org: "Xaenithra", date: "09/2025 - Present", active: true },
+        { role: "Core Member", org: "Cysecsphere Club", date: "Present" },
+        { role: "Contributor", org: "Brainly.in", date: "2020 - 2022" }
     ];
 
     const certs = [
-        { name: "Cybersecurity Analyst", issuer: "IBM" },
-        { name: "Ethical Hacking", issuer: "EC-Council" },
-        { name: "Google Cybersecurity", issuer: "Google" }
+        { name: "Certified AppSec Practitioner (CAP)", issuer: "The SecOps Group" },
+        { name: "Pre Security Certificate", issuer: "TryHackMe" },
+        { name: "Cybersecurity Analyst", issuer: "Tata / Forage" },
+        { name: "Google Cloud Compute", issuer: "Google" }
     ];
 
     const boxStyle = "bg-cyber-glass border border-white/5 p-6 rounded-3xl backdrop-blur-md hover:border-white/10 transition-colors group relative overflow-hidden";
@@ -45,15 +46,19 @@ const BentoGrid = () => {
                             <Terminal size={16} />
                             <span>WHOAMI</span>
                         </div>
-                        <p className="text-2xl md:text-3xl font-body font-medium text-gray-200 leading-relaxed">
-                            Driven <span className="text-white font-bold">Computer Science Engineer</span> bridging the gap between <span className="text-neon-pink">Offensive Security</span> and <span className="text-neon-cyan">Full-Stack Development</span>.
+                        <p className="text-lg md:text-xl font-body font-medium text-gray-300 leading-relaxed">
+                            Driven <span className="text-white font-bold">Computer Science Engineer</span> specializing in <span className="text-neon-pink">Cybersecurity</span> with a "First Principles" approach.
+                            Bridging the gap between <span className="text-neon-cyan">Offensive Security</span> and <span className="text-white">Full-Stack Development</span>.
+                        </p>
+                        <p className="mt-4 text-sm text-gray-400 leading-relaxed">
+                            Proven track record in competitive hacking (Top 10 Cipher Hunt 2.0, Rank 1 MeitY CTF) and building secure, scalable systems like the Xaenithra Command Center. Certified AppSec Practitioner (CAP).
                         </p>
                     </div>
                     <div className="mt-8 relative z-10">
                         <div className="flex flex-wrap gap-2 text-sm font-mono text-gray-400">
-                            <span className="bg-black/30 px-3 py-1 rounded-full border border-white/5">CTF Player</span>
-                            <span className="bg-black/30 px-3 py-1 rounded-full border border-white/5">Bug Hunter</span>
-                            <span className="bg-black/30 px-3 py-1 rounded-full border border-white/5">Open Source</span>
+                            <span className="bg-black/30 px-3 py-1 rounded-full border border-white/5 text-neon-cyan">Rank 1 MeitY CTF</span>
+                            <span className="bg-black/30 px-3 py-1 rounded-full border border-white/5">Finalist Echelon</span>
+                            <span className="bg-black/30 px-3 py-1 rounded-full border border-white/5 text-neon-pink">Top 10 Cipher Hunt</span>
                         </div>
                     </div>
                 </motion.div>
@@ -70,9 +75,13 @@ const BentoGrid = () => {
                         <GraduationCap size={16} />
                         <span>EDUCATION</span>
                     </div>
-                    <h3 className="text-xl font-bold text-white mb-1">B.E. CSE (Hons)</h3>
+                    <h3 className="text-lg font-bold text-white mb-1">B.E. CSE (Hons)</h3>
                     <p className="text-sm text-gray-400">Chandigarh University</p>
-                    <p className="text-xs text-neon-purple mt-2 font-mono">2025 - 2029</p>
+                    <div className="mt-2 text-xs text-neon-purple font-mono border-l-2 border-neon-purple pl-2">
+                        Cybersecurity with IBM
+                        <br />
+                        <span className="text-gray-500">2025 - 2029</span>
+                    </div>
                 </motion.div>
 
                 {/* 3. Location / Status (1x1) */}
@@ -110,9 +119,9 @@ const BentoGrid = () => {
                         {experience.map((exp, i) => (
                             <div key={i} className="relative pl-6">
                                 <div className={`absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full border-2 ${exp.active ? 'bg-neon-cyan border-neon-cyan shadow-[0_0_10px_rgba(0,240,255,0.5)]' : 'bg-black border-gray-600'}`} />
-                                <h4 className="text-white font-bold">{exp.role}</h4>
-                                <p className="text-sm text-gray-400">{exp.org}</p>
-                                <p className="text-xs text-gray-500 font-mono mt-1">{exp.date}</p>
+                                <h4 className="text-white font-bold text-sm">{exp.role}</h4>
+                                <p className="text-xs text-gray-400">{exp.org}</p>
+                                <p className="text-[10px] text-gray-500 font-mono mt-1">{exp.date}</p>
                             </div>
                         ))}
                     </div>
@@ -133,7 +142,7 @@ const BentoGrid = () => {
                     <div className="relative flex overflow-x-hidden group">
                         <div className="animate-marquee whitespace-nowrap flex gap-4">
                             {[...skills, ...skills].map((skill, i) => (
-                                <span key={i} className="text-2xl font-display font-bold text-white/20 uppercase hover:text-white hover:text-glow-cyan transition-colors cursor-default">
+                                <span key={i} className="text-xl md:text-2xl font-display font-bold text-white/20 uppercase hover:text-white hover:text-glow-cyan transition-colors cursor-default">
                                     {skill}
                                 </span>
                             ))}
@@ -149,20 +158,19 @@ const BentoGrid = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.5 }}
                     viewport={{ once: true }}
-                    className={`${boxStyle} md:col-span-1 md:row-span-1`}
+                    className={`${boxStyle} md:col-span-1 md:row-span-1 overflow-y-auto custom-scrollbar`}
                 >
                     <div className="flex items-center gap-2 mb-4 text-neon-purple font-mono text-sm">
                         <Award size={16} />
                         <span>CERTS</span>
                     </div>
-                    <div className="flex flex-col gap-2">
-                        {certs.slice(0, 3).map((cert, i) => (
-                            <div key={i} className="flex items-center gap-2 text-xs text-gray-300">
-                                <Shield size={12} className="text-neon-cyan" />
-                                <span className="truncate">{cert.issuer}</span>
+                    <div className="flex flex-col gap-3">
+                        {certs.map((cert, i) => (
+                            <div key={i} className="flex flex-col text-xs text-gray-300 border-l border-white/10 pl-2">
+                                <span className="font-bold text-white">{cert.name}</span>
+                                <span className="text-gray-500">{cert.issuer}</span>
                             </div>
                         ))}
-                        <div className="text-xs text-gray-500 font-mono mt-2">+ Many more</div>
                     </div>
                 </motion.div>
 
