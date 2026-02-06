@@ -22,12 +22,12 @@ const Experience = () => {
 
     return (
         <section className="mb-32">
-            <div className="flex items-center gap-4 mb-12 border-b border-coffee-800 pb-4">
-                <Briefcase className="text-bronze-500" size={32} />
-                <h3 className="text-3xl font-bold text-coffee-100 font-mono">EXPERIENCE_LOG</h3>
+            <div className="flex items-center gap-4 mb-12 border-b border-white/10 pb-4">
+                <Briefcase className="text-neon-pink" size={32} />
+                <h3 className="text-3xl font-bold text-white font-mono text-glow-pink">EXPERIENCE_LOG</h3>
             </div>
 
-            <div className="relative border-l-2 border-coffee-800 ml-3 md:ml-6 space-y-12 pl-8 md:pl-12">
+            <div className="relative border-l-2 border-white/10 ml-3 md:ml-6 space-y-12 pl-8 md:pl-12">
                 {experiences.map((exp, index) => (
                     <motion.div
                         key={index}
@@ -37,17 +37,17 @@ const Experience = () => {
                         className="relative"
                     >
                         {/* Timeline Dot */}
-                        <div className={`absolute -left-[41px] md:-left-[59px] top-1 w-5 h-5 rounded-full border-4 border-black ${exp.active ? 'bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)]' : 'bg-coffee-600'}`}></div>
+                        <div className={`absolute -left-[41px] md:-left-[59px] top-1 w-5 h-5 rounded-full border-4 border-black ${exp.active ? 'bg-neon-cyan shadow-[0_0_10px_rgba(0,240,255,0.8)]' : 'bg-gray-700'}`}></div>
 
-                        <h4 className="text-2xl font-bold text-coffee-100 flex items-center gap-3">
+                        <h4 className="text-2xl font-bold text-white flex items-center gap-3">
                             {exp.role}
-                            <span className="text-bronze-500 text-lg font-mono">@ {exp.org}</span>
+                            <span className="text-neon-purple text-lg font-mono">@ {exp.org}</span>
                         </h4>
-                        <span className="inline-block px-2 py-1 bg-coffee-900 text-coffee-400 text-xs font-mono rounded mt-2 mb-4">
+                        <span className="inline-block px-2 py-1 bg-white/5 text-gray-400 text-xs font-mono rounded mt-2 mb-4 border border-white/10">
                             {exp.period}
                         </span>
 
-                        <p className="text-coffee-300 max-w-2xl">
+                        <p className="text-gray-300 max-w-2xl bg-white/5 p-4 rounded-lg border-l-2 border-neon-cyan/50 backdrop-blur-sm">
                             {exp.desc}
                         </p>
                     </motion.div>

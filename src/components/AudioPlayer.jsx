@@ -38,37 +38,37 @@ const AudioPlayer = () => {
             <button
                 onClick={toggleMute}
                 className={`
-                    p-3 rounded-full border-2 transition-all duration-300 group relative overflow-hidden shadow-lg
+                    p-3 rounded-full border transition-all duration-300 group relative overflow-hidden shadow-lg
                     ${isMuted
-                        ? 'bg-black/90 border-coffee-600 text-coffee-400 hover:border-amber-500 hover:text-amber-500' // High contrast mute state
-                        : 'bg-black/90 border-amber-500 text-amber-500 shadow-[0_0_20px_rgba(245,158,11,0.5)]'
+                        ? 'bg-cyber-950/80 border-cyber-light text-gray-500 hover:border-neon-cyan hover:text-neon-cyan'
+                        : 'bg-black/90 border-neon-cyan text-neon-cyan shadow-[0_0_20px_rgba(0,240,255,0.4)]'
                     }
                 `}
             >
                 {/* Ping animation when playing */}
                 {!isMuted && (
-                    <span className="absolute inset-0 rounded-full animate-ping bg-amber-500/20"></span>
+                    <span className="absolute inset-0 rounded-full animate-ping bg-neon-cyan/20"></span>
                 )}
 
                 {audioError ? (
-                    <VolumeX size={20} className="text-red-500" title="Stream Offline" />
+                    <VolumeX size={20} className="text-neon-pink" title="Stream Offline" />
                 ) : (
                     isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />
                 )}
             </button>
 
-            {/* Visualizer bars (Fake/CSS based) */}
+            {/* Visualizer bars (Neon Cyan) */}
             {!isMuted && !audioError && (
                 <div className="flex items-end gap-1 h-6">
-                    <div className="w-1 bg-amber-500/80 animate-[music-bar_1s_ease-in-out_infinite]"></div>
-                    <div className="w-1 bg-amber-500/60 animate-[music-bar_1.2s_ease-in-out_infinite_0.1s] h-3"></div>
-                    <div className="w-1 bg-amber-500/80 animate-[music-bar_0.8s_ease-in-out_infinite_0.2s] h-5"></div>
-                    <div className="w-1 bg-amber-500/60 animate-[music-bar_1.1s_ease-in-out_infinite_0.3s]"></div>
+                    <div className="w-1 bg-neon-cyan/80 animate-[music-bar_1s_ease-in-out_infinite]"></div>
+                    <div className="w-1 bg-neon-cyan/60 animate-[music-bar_1.2s_ease-in-out_infinite_0.1s] h-3"></div>
+                    <div className="w-1 bg-neon-cyan/80 animate-[music-bar_0.8s_ease-in-out_infinite_0.2s] h-5"></div>
+                    <div className="w-1 bg-neon-cyan/60 animate-[music-bar_1.1s_ease-in-out_infinite_0.3s]"></div>
                 </div>
             )}
 
             {/* Label for clarity */}
-            <span className={`text-xs font-mono font-bold tracking-widest transition-all duration-300 ${isMuted ? 'text-coffee-600 opacity-0 group-hover:opacity-100' : 'text-amber-500 opacity-100'}`}>
+            <span className={`text-xs font-mono font-bold tracking-widest transition-all duration-300 ${isMuted ? 'text-gray-500 opacity-0 group-hover:opacity-100' : 'text-neon-cyan opacity-100'}`}>
                 {isMuted ? 'MUTE' : 'ON AIR'}
             </span>
 

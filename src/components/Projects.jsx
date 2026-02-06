@@ -39,9 +39,9 @@ const Projects = () => {
 
     return (
         <section className="mb-32">
-            <div className="flex items-center gap-4 mb-12 border-b border-coffee-800 pb-4">
-                <Layout className="text-bronze-500" size={32} />
-                <h3 className="text-3xl font-bold text-coffee-100 font-mono">PROJECT_MODULES</h3>
+            <div className="flex items-center gap-4 mb-12 border-b border-white/10 pb-4">
+                <Layout className="text-neon-cyan" size={32} />
+                <h3 className="text-3xl font-bold text-white font-mono text-glow-cyan">PROJECT_MODULES</h3>
             </div>
 
             <div className="grid grid-cols-1 gap-12 mb-16">
@@ -49,20 +49,20 @@ const Projects = () => {
                 <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     whileInView={{ opacity: 1, scale: 1 }}
-                    className="bg-coffee-950/80 border border-bronze-500/50 rounded-xl overflow-hidden shadow-[0_0_30px_rgba(205,127,50,0.1)] relative group"
+                    className="glass-card rounded-xl overflow-hidden relative group border-t border-white/20"
                 >
                     {/* HUD Corners - The Innovation */}
-                    <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-amber-500 z-30 opacity-60 group-hover:opacity-100 transition-opacity"></div>
-                    <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-amber-500 z-30 opacity-60 group-hover:opacity-100 transition-opacity"></div>
-                    <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-amber-500 z-30 opacity-60 group-hover:opacity-100 transition-opacity"></div>
-                    <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-amber-500 z-30 opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="absolute top-0 left-0 w-8 h-8 border-t-2 border-l-2 border-neon-cyan z-30 opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-neon-cyan z-30 opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-neon-cyan z-30 opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-r-2 border-neon-cyan z-30 opacity-60 group-hover:opacity-100 transition-opacity"></div>
 
                     {/* Central Focus Recticle */}
-                    <div className="absolute inset-0 border border-coffee-800/30 z-20 pointer-events-none group-hover:border-amber-500/20 transition-colors duration-500"></div>
+                    <div className="absolute inset-0 border border-neon-purple/20 z-20 pointer-events-none group-hover:border-neon-cyan/30 transition-colors duration-500"></div>
 
                     <div className="grid lg:grid-cols-2 gap-0">
                         {/* Image Side - Carousel */}
-                        <div className="relative overflow-hidden h-64 lg:h-[400px] border-b lg:border-b-0 lg:border-r border-coffee-800 bg-black group-hover:border-amber-500/50 transition-colors">
+                        <div className="relative overflow-hidden h-64 lg:h-[400px] border-b lg:border-b-0 lg:border-r border-white/10 bg-black/50 group-hover:border-neon-cyan/50 transition-colors">
                             {/* Blurred Background Layer for filling black spaces */}
                             <div className="absolute inset-0 z-0 opacity-40 blur-2xl transform scale-125">
                                 {trinetraImages.map((img, index) => (
@@ -98,50 +98,50 @@ const Projects = () => {
                                     <button
                                         key={idx}
                                         onClick={() => setActiveImage(idx)}
-                                        className={`h-1.5 rounded-full transition-all duration-300 ${idx === activeImage ? 'w-8 bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)]' : 'w-2 bg-coffee-800 hover:bg-coffee-600'}`}
+                                        className={`h-1.5 rounded-full transition-all duration-300 ${idx === activeImage ? 'w-8 bg-neon-cyan shadow-[0_0_10px_rgba(0,240,255,0.8)]' : 'w-2 bg-white/20 hover:bg-white/40'}`}
                                     />
                                 ))}
                             </div>
 
                             {/* Overlay Badge */}
-                            <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-sm border border-bronze-500 text-bronze-400 px-3 py-1 text-xs font-mono font-bold flex items-center gap-2">
+                            <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-sm border border-neon-purple text-neon-purple px-3 py-1 text-xs font-mono font-bold flex items-center gap-2">
                                 <Database size={14} /> FLAGSHIP PROJECT
                             </div>
                         </div>
 
                         {/* Content Side */}
-                        <div className="p-8 flex flex-col justify-between bg-coffee-900/20">
+                        <div className="p-8 flex flex-col justify-between bg-black/20 backdrop-blur-sm">
                             <div>
                                 <div className="flex justify-between items-start mb-4">
-                                    <h4 className="text-3xl font-black text-coffee-100 mb-2 font-mono group-hover:text-amber-500 transition-colors">
-                                        TRINETRA <span className="text-lg font-normal text-bronze-500">by Xaenithra</span>
+                                    <h4 className="text-3xl font-black text-white mb-2 font-mono group-hover:text-neon-cyan transition-colors">
+                                        TRINETRA <span className="text-lg font-normal text-neon-purple">by Xaenithra</span>
                                     </h4>
                                     <a href="https://github.com/utxdev/Xaenithra-ps6-investigation" target="_blank" rel="noopener noreferrer">
-                                        <ExternalLink size={24} className="text-coffee-500 hover:text-amber-500 transition-colors" />
+                                        <ExternalLink size={24} className="text-gray-400 hover:text-neon-cyan transition-colors" />
                                     </a>
                                 </div>
 
-                                <p className="text-coffee-300 text-base mb-6 leading-relaxed font-mono">
-                                    <span className="text-amber-500 font-bold">The "All-Seeing Eye" of Digital Forensics.</span> <br />
+                                <p className="text-gray-300 text-base mb-6 leading-relaxed font-mono">
+                                    <span className="text-neon-cyan font-bold">The "All-Seeing Eye" of Digital Forensics.</span> <br />
                                     A 5-stage pipeline connecting device extraction (Indrajaal) to court-admissible reporting (Chitragupta).
                                 </p>
 
                                 <div className="space-y-4 mb-6">
-                                    <div className="p-3 bg-black/40 border-l-2 border-bronze-500 text-sm text-coffee-300 font-mono">
-                                        {'>'} <span className="text-amber-500">INDRAJAAL:</span> Live ADB Extraction Engine
+                                    <div className="p-3 bg-white/5 border-l-2 border-neon-purple text-sm text-gray-300 font-mono">
+                                        {'>'} <span className="text-neon-cyan">INDRAJAAL:</span> Live ADB Extraction Engine
                                     </div>
-                                    <div className="p-3 bg-black/40 border-l-2 border-bronze-500 text-sm text-coffee-300 font-mono">
-                                        {'>'} <span className="text-amber-500">KAAL CHAKRA:</span> Timeline Visualization
+                                    <div className="p-3 bg-white/5 border-l-2 border-neon-purple text-sm text-gray-300 font-mono">
+                                        {'>'} <span className="text-neon-cyan">KAAL CHAKRA:</span> Timeline Visualization
                                     </div>
-                                    <div className="p-3 bg-black/40 border-l-2 border-bronze-500 text-sm text-coffee-300 font-mono">
-                                        {'>'} <span className="text-amber-500">KARMA SEAL:</span> Cryptographic Evidence Integrity
+                                    <div className="p-3 bg-white/5 border-l-2 border-neon-purple text-sm text-gray-300 font-mono">
+                                        {'>'} <span className="text-neon-cyan">KARMA SEAL:</span> Cryptographic Evidence Integrity
                                     </div>
                                 </div>
                             </div>
 
                             <div className="flex flex-wrap gap-2 mt-4">
                                 {["React 18", "Python 3.10", "FastAPI", "ADB", "Forensics", "Tailwind"].map((tech, idx) => (
-                                    <span key={idx} className="px-2 py-1 bg-black/40 border border-coffee-700 text-xs font-mono text-bronze-400">
+                                    <span key={idx} className="px-2 py-1 bg-black/40 border border-neon-purple/30 text-xs font-mono text-neon-purple/80">
                                         {tech}
                                     </span>
                                 ))}
@@ -158,28 +158,30 @@ const Projects = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.1 }}
-                        className="group bg-coffee-900/40 border border-coffee-800 p-6 rounded-lg hover:border-bronze-500 hover:bg-coffee-900/60 transition-all duration-300 flex flex-col"
+                        className="group glass-card p-6 rounded-lg hover:border-neon-cyan/50 hover:bg-white/10 transition-all duration-300 flex flex-col relative overflow-hidden"
                     >
-                        <div className="flex justify-between items-start mb-4">
-                            <div className="p-3 bg-coffee-950 rounded-lg border border-coffee-800 group-hover:border-bronze-500/50 transition-colors">
+                        <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                        <div className="flex justify-between items-start mb-4 relative z-10">
+                            <div className="p-3 bg-white/5 rounded-lg border border-white/10 group-hover:border-neon-cyan/50 transition-colors">
                                 {project.icon}
                             </div>
                             <a href={project.link} target="_blank" rel="noopener noreferrer">
-                                <ExternalLink size={18} className="text-coffee-600 group-hover:text-amber-500 transition-colors cursor-pointer" />
+                                <ExternalLink size={18} className="text-gray-400 group-hover:text-neon-cyan transition-colors cursor-pointer" />
                             </a>
                         </div>
 
-                        <h4 className="text-xl font-bold text-coffee-100 mb-2 font-mono group-hover:text-amber-500 transition-colors">
+                        <h4 className="text-xl font-bold text-white mb-2 font-mono group-hover:text-neon-cyan transition-colors relative z-10">
                             {project.title}
                         </h4>
 
-                        <p className="text-coffee-300 text-sm mb-6 flex-grow leading-relaxed">
+                        <p className="text-gray-400 text-sm mb-6 flex-grow leading-relaxed relative z-10">
                             {project.desc}
                         </p>
 
-                        <div className="flex flex-wrap gap-2 mt-auto">
+                        <div className="flex flex-wrap gap-2 mt-auto relative z-10">
                             {project.tech.map((tech, idx) => (
-                                <span key={idx} className="px-2 py-1 bg-coffee-950 border border-coffee-800 rounded text-xs font-mono text-bronze-400 group-hover:border-bronze-900 transition-colors">
+                                <span key={idx} className="px-2 py-1 bg-black/30 border border-white/10 rounded text-xs font-mono text-neon-purple group-hover:border-neon-cyan/30 transition-colors">
                                     {tech}
                                 </span>
                             ))}

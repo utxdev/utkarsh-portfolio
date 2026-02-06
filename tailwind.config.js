@@ -7,26 +7,21 @@ export default {
     theme: {
         extend: {
             colors: {
-                coffee: {
-                    100: '#EBE5DF',
-                    200: '#D6C8BB',
-                    300: '#BFA896',
-                    400: '#A98973',
-                    500: '#8C6A54',
-                    600: '#6F4E3C',
-                    700: '#55392B',
-                    800: '#3D281E',
-                    900: '#2B1C15',
-                    950: '#1A110D',
+                cyber: {
+                    DEFAULT: '#2D0B5A', // Deep Purple Main
+                    900: '#1A0536',     // Darker Void
+                    950: '#0F0220',     // Pitch Blackish Purple
+                    light: '#5B2A8C',   // Lighter Highlight
+                    glass: 'rgba(45, 11, 90, 0.4)', // Glass effect base
                 },
-                bronze: {
-                    400: '#CD7F32',
-                    500: '#B87333',
-                    600: '#A0522D',
+                neon: {
+                    cyan: '#00F0FF',
+                    pink: '#FF003C',
+                    purple: '#BD00FF',
+                    blue: '#0047FF'
                 },
-                amber: {
-                    500: '#F59E0B',
-                    900: '#78350F',
+                void: {
+                    DEFAULT: '#050014', // Deepest background
                 }
             },
             fontFamily: {

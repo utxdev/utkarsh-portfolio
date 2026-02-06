@@ -17,7 +17,7 @@ const App = () => {
     }, []);
 
     return (
-        <div className={`min-h-screen bg-coffee-950 text-coffee-100 font-mono selection:bg-amber-900/50 selection:text-amber-200 overflow-x-hidden transition-opacity duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
+        <div className={`min-h-screen bg-cyber-950 text-white font-mono selection:bg-neon-pink/30 selection:text-white overflow-x-hidden transition-opacity duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
             <CyberBackground />
             <AudioPlayer />
 

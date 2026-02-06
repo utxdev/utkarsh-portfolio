@@ -2,4 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer utilities {
+    .glass-card {
+        @apply backdrop-blur-md bg-cyber-glass border border-white/10 shadow-[0_4px_30px_rgba(0, 0, 0, 0.1)];
+    }
 
+    .text-glow-cyan {
+        text-shadow: 0 0 10px #00F0FF;
+    }
+
+    .text-glow-pink {
+        text-shadow: 0 0 10px #FF003C;
+    }
+}

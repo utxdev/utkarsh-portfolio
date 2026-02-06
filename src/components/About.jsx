@@ -10,28 +10,28 @@ const About = () => {
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="bg-coffee-900/40 border border-coffee-800 p-8 rounded-sm relative overflow-hidden"
+                className="glass-card p-8 rounded-xl relative overflow-hidden border-t border-white/20"
             >
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-bronze-500 to-transparent opacity-50"></div>
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-neon-purple to-transparent opacity-50"></div>
                 <div className="flex items-center gap-3 mb-6">
-                    <User className="text-bronze-500" size={24} />
-                    <h3 className="text-2xl font-bold text-coffee-100 font-mono">
+                    <User className="text-neon-cyan" size={24} />
+                    <h3 className="text-2xl font-bold text-white font-mono">
                         // SUMMARY
                     </h3>
                 </div>
-                <p className="text-coffee-300 leading-relaxed text-lg">
-                    Driven <span className="text-amber-500 font-bold">Computer Science Engineering</span> student specializing in
-                    <span className="text-bronze-400"> Cybersecurity</span> with a "First Principles" approach to problem-solving.
+                <p className="text-gray-300 leading-relaxed text-lg">
+                    Driven <span className="text-neon-pink font-bold">Computer Science Engineering</span> student specializing in
+                    <span className="text-neon-cyan"> Cybersecurity</span> with a "First Principles" approach to problem-solving.
                     Bridging the gap between offensive security and full-stack development.
                 </p>
-                <div className="mt-4 p-4 bg-black/40 border-l-2 border-bronze-600 font-mono text-sm text-coffee-400">
+                <div className="mt-4 p-4 bg-black/40 border-l-2 border-neon-purple font-mono text-sm text-gray-400">
                     <p>{'>'} Proven track record in competitive hacking (Top 10 Global Cipher Hunt 2.0).</p>
                     <p>{'>'} Rank 1 MeitY CTF.</p>
                     <p>{'>'} Building secure, scalable systems like Xaenithra Command Center.</p>
                 </div>
 
                 {/* Visual Accent */}
-                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-bronze-500/10 rounded-full blur-xl animate-pulse"></div>
+                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-neon-purple/20 rounded-full blur-[80px] animate-pulse"></div>
             </motion.div>
 
             {/* Education */}
@@ -39,27 +39,27 @@ const About = () => {
                 initial={{ opacity: 0, x: 20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                className="bg-coffee-900/40 border border-coffee-800 p-8 rounded-sm relative"
+                className="glass-card p-8 rounded-xl relative border-t border-white/20"
             >
                 <div className="flex items-center gap-3 mb-6">
-                    <BookOpen className="text-bronze-500" size={24} />
-                    <h3 className="text-2xl font-bold text-coffee-100 font-mono">
+                    <BookOpen className="text-neon-pink" size={24} />
+                    <h3 className="text-2xl font-bold text-white font-mono">
                         // EDUCATION
                     </h3>
                 </div>
 
                 <div className="space-y-6">
                     <div>
-                        <h4 className="text-xl font-bold text-coffee-100">Bachelor of Engineering (Hons) CSE</h4>
-                        <div className="flex justify-between items-center text-sm text-coffee-400 font-mono mt-1">
+                        <h4 className="text-xl font-bold text-white">Bachelor of Engineering (Hons) CSE</h4>
+                        <div className="flex justify-between items-center text-sm text-gray-400 font-mono mt-1">
                             <span>Cybersecurity with IBM</span>
-                            <span className="text-bronze-500">01/2025 - 12/2029</span>
+                            <span className="text-neon-cyan">01/2025 - 12/2029</span>
                         </div>
-                        <p className="text-bronze-600 mt-1 font-bold">CHANDIGARH UNIVERSITY</p>
+                        <p className="text-neon-purple mt-1 font-bold">CHANDIGARH UNIVERSITY</p>
                     </div>
                 </div>
 
-                <div className="absolute bottom-4 right-4 text-coffee-800 opacity-20 font-black text-6xl select-none z-0">
+                <div className="absolute bottom-4 right-4 text-white/5 opacity-20 font-black text-6xl select-none z-0">
                     EDU
                 </div>
             </motion.div>

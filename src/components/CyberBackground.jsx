@@ -18,10 +18,10 @@ const CyberBackground = () => {
 
     // Particles
     const particles = [];
-    const particleCount = 150; // Density
+    const particleCount = 120; // Slightly less dense for cleaner look
 
-    // Colors: Coffee, Bronze, Amber
-    const colors = ['#6F4E37', '#B87333', '#F59E0B', '#1A110D'];
+    // Colors: Neon Cyan, Neon Pink, Deep Purple, White
+    const colors = ['#00F0FF', '#FF003C', '#BD00FF', '#FFFFFF'];
 
     class Particle {
       constructor() {
@@ -31,9 +31,9 @@ const CyberBackground = () => {
       reset() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 2 + 0.5;
-        this.speedX = Math.random() * 0.5 - 0.25;
-        this.speedY = Math.random() * 0.5 - 0.25;
+        this.size = Math.random() * 2; // Varying small sizes
+        this.speedX = Math.random() * 0.4 - 0.2;
+        this.speedY = Math.random() * 0.4 - 0.2;
         this.color = colors[Math.floor(Math.random() * colors.length)];
         this.opacity = Math.random() * 0.5 + 0.1;
         this.life = Math.random() * 100 + 100;
@@ -54,10 +54,13 @@ const CyberBackground = () => {
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.shadowBlur = 10;
+        ctx.shadowColor = this.color;
         ctx.fillStyle = this.color;
         ctx.globalAlpha = this.opacity;
         ctx.fill();
         ctx.globalAlpha = 1;
+        ctx.shadowBlur = 0;
       }
     }
 
@@ -68,8 +71,8 @@ const CyberBackground = () => {
 
     // Animation Loop
     const animate = () => {
-      // Trail effect (Cyber smear)
-      ctx.fillStyle = 'rgba(26, 17, 13, 0.15)'; // coffee-950 with opacity for trails
+      // Deep Void Background with slight trail
+      ctx.fillStyle = 'rgba(5, 0, 20, 0.2)'; // void-DEFAULT with opacity
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach(p => {
@@ -77,12 +80,15 @@ const CyberBackground = () => {
         p.draw();
       });
 
-      // Random "Cyber Glitch" Horizontal Lines
-      if (Math.random() > 0.95) {
+      // Random "Cyber Glitch" Horizontal Lines - Neon Cyan
+      if (Math.random() > 0.97) {
         const y = Math.random() * canvas.height;
         const h = Math.random() * 2 + 1;
-        ctx.fillStyle = 'rgba(245, 158, 11, 0.1)'; // Amber weak
-        ctx.fillRect(0, y, canvas.width, h);
+        const w = Math.random() * canvas.width;
+        const x = Math.random() * canvas.width;
+
+        ctx.fillStyle = 'rgba(0, 240, 255, 0.05)'; // Neon Cyan weak
+        ctx.fillRect(x, y, w, h);
       }
 
       animationFrameId = requestAnimationFrame(animate);
@@ -97,11 +103,15 @@ const CyberBackground = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#1A110D]">
+    <div className="fixed inset-0 z-0 pointer-events-none overflow-hidden bg-[#050014]">
       <canvas ref={canvasRef} className="absolute inset-0" />
 
-      {/* Vignette Overlay */}
-      <div className="absolute inset-0 bg-radial-gradient from-transparent via-[#1A110D]/20 to-[#1A110D] opacity-90" />
+      {/* Cosmic Vignette Overlay */}
+      <div className="absolute inset-0 bg-radial-gradient from-transparent via-[#050014]/40 to-[#050014] opacity-80" />
+
+      {/* Mesh Gradient Glows */}
+      <div className="absolute top-[-20%] left-[-10%] w-[600px] h-[600px] bg-[#BD00FF]/20 rounded-full blur-[150px] animate-pulse-slow pointer-events-none"></div>
+      <div className="absolute bottom-[-20%] right-[-10%] w-[600px] h-[600px] bg-[#00F0FF]/10 rounded-full blur-[150px] animate-pulse-slow delay-1000 pointer-events-none"></div>
     </div>
   );
 };
