@@ -9,6 +9,7 @@ const Header = () => {
                 initial={{ opacity: 0, x: -50 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8 }}
+                className="flex-1"
             >
                 <div className="flex items-center gap-2 text-neon-cyan mb-2 font-mono">
                     <Terminal size={18} />
@@ -53,29 +54,52 @@ const Header = () => {
                 </div>
             </motion.div>
 
-            <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay: 0.3 }}
-                className="relative group block"
-            >
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-purple to-neon-cyan rounded-full opacity-50 group-hover:opacity-100 blur transition duration-500"></div>
-                <a
-                    href="/assets/resume.pdf"
-                    download="Utkarsh_Pratham_Resume.pdf"
-                    className="relative px-8 py-3 bg-black border border-neon-cyan/50 rounded-full flex items-center gap-3 hover:border-neon-cyan hover:shadow-[0_0_20px_rgba(0,240,255,0.3)] transition-all group-hover:scale-105 active:scale-95"
+            {/* Profile Photo & Resume Block */}
+            <div className="flex flex-col items-center gap-6">
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.8, rotate: -5 }}
+                    animate={{ opacity: 1, scale: 1, rotate: 0 }}
+                    transition={{ delay: 0.5, type: "spring" }}
+                    className="relative group w-48 h-48 md:w-64 md:h-64"
                 >
-                    {/* Glowing scanning effect inside */}
-                    <div className="absolute inset-0 rounded-full overflow-hidden">
-                        <div className="absolute top-0 left-[-100%] w-[50%] h-full bg-gradient-to-r from-transparent via-neon-cyan/20 to-transparent animate-[shimmer_2s_infinite]"></div>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-tr from-neon-cyan to-neon-purple rounded-full blur-[20px] opacity-40 group-hover:opacity-60 transition-opacity animate-pulse"></div>
+                    <div className="relative w-full h-full rounded-full overflow-hidden border-2 border-white/20 group-hover:border-neon-cyan transition-colors shadow-2xl">
+                        <img
+                            src="/assets/profile.png"
+                            alt="Utkarsh Pratham"
+                            className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-500 scale-100 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-neon-purple/10 mix-blend-overlay pointer-events-none"></div>
 
-                    <Terminal size={18} className="text-neon-cyan" />
-                    <span className="font-bold tracking-widest font-mono text-xs md:text-sm text-white group-hover:text-neon-cyan transition-colors">
-                        Download Resume
-                    </span>
-                </a>
-            </motion.div>
+                        {/* Scanline overlay */}
+                        <div className="absolute inset-0 bg-[url('https://media.giphy.com/media/xT9Igk3jF5r6kS0g5W/giphy.gif')] opacity-10 mix-blend-soft-light pointer-events-none"></div>
+                    </div>
+                </motion.div>
+
+                <motion.div
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.3 }}
+                    className="relative group block"
+                >
+                    <div className="absolute -inset-0.5 bg-gradient-to-r from-neon-purple to-neon-cyan rounded-full opacity-50 group-hover:opacity-100 blur transition duration-500"></div>
+                    <a
+                        href="/assets/resume.pdf"
+                        download="Utkarsh_Pratham_Resume.pdf"
+                        className="relative px-8 py-3 bg-black border border-neon-cyan/50 rounded-full flex items-center gap-3 hover:border-neon-cyan hover:shadow-[0_0_20px_rgba(0,240,255,0.3)] transition-all group-hover:scale-105 active:scale-95"
+                    >
+                        {/* Glowing scanning effect inside */}
+                        <div className="absolute inset-0 rounded-full overflow-hidden">
+                            <div className="absolute top-0 left-[-100%] w-[50%] h-full bg-gradient-to-r from-transparent via-neon-cyan/20 to-transparent animate-[shimmer_2s_infinite]"></div>
+                        </div>
+
+                        <Terminal size={18} className="text-neon-cyan" />
+                        <span className="font-bold tracking-widest font-mono text-xs md:text-sm text-white group-hover:text-neon-cyan transition-colors">
+                            Download Resume
+                        </span>
+                    </a>
+                </motion.div>
+            </div>
         </header>
     );
 };
