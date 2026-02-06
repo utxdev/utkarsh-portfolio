@@ -7,7 +7,7 @@ const BentoCard = ({ children, className, img }) => {
         <motion.div
             whileHover={{ scale: 1.02 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className={`relative overflow-hidden rounded-3xl bg-cyber-900 border border-white/5 group ${className}`}
+            className={`relative overflow-hidden rounded-3xl bg-cyber-900 border border-white/5 group hover:border-neon-cyan/40 hover:shadow-[0_0_30px_rgba(0,240,255,0.15)] transition-all duration-500 ${className}`}
         >
             {/* Background Image with Overlay */}
             {img && (
@@ -125,8 +125,11 @@ const BentoGrid = () => {
                             </h3>
                         </div>
                         <div className="flex-shrink-0">
-                            <button className="px-8 py-4 rounded-full bg-white text-black font-bold hover:scale-105 transition-transform">
-                                View Projects
+                            <button
+                                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                                className="px-8 py-4 rounded-full bg-black/50 border border-neon-cyan/50 text-neon-cyan font-bold hover:bg-neon-cyan hover:text-black hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] transition-all duration-300 backdrop-blur-md"
+                            >
+                                VIEW_OPERATIONS
                             </button>
                         </div>
                     </div>

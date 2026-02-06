@@ -46,22 +46,28 @@ const Header = () => {
             <div className="relative group flex flex-col items-center">
 
                 {/* Holographic Avatar */}
+                {/* Holographic Avatar with Breathing Animation */}
                 <motion.div
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ scale: 1, opacity: 1 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
-                    className="relative w-48 h-48 md:w-56 md:h-56 mb-8 rounded-full p-1 bg-gradient-to-tr from-neon-cyan via-white to-neon-violet"
+                    animate={{ y: [-10, 10, -10] }}
+                    transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
                 >
-                    <div className="absolute inset-0 rounded-full bg-neon-cyan blur-md opacity-50 animate-pulse"></div>
-                    <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-black bg-black">
-                        <img
-                            src="/assets/profile.png?v=updated"
-                            alt="Utkarsh Pratham"
-                            className="w-full h-full object-cover"
-                        />
-                        {/* Scanline Overlay */}
-                        <div className="absolute inset-0 bg-[url('https://media.giphy.com/media/xT9IgkKL1SJV8kRrCE/giphy.gif')] opacity-10 mix-blend-overlay pointer-events-none"></div>
-                    </div>
+                    <motion.div
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        className="relative w-48 h-48 md:w-56 md:h-56 mb-8 rounded-full p-1 bg-gradient-to-tr from-neon-cyan via-white to-neon-violet shadow-[0_0_50px_rgba(139,92,246,0.3)]"
+                    >
+                        <div className="absolute inset-0 rounded-full bg-neon-cyan blur-md opacity-50 animate-pulse"></div>
+                        <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-black bg-black">
+                            <img
+                                src="/assets/profile.png?v=updated"
+                                alt="Utkarsh Pratham"
+                                className="w-full h-full object-cover"
+                            />
+                            {/* Scanline Overlay */}
+                            <div className="absolute inset-0 bg-[url('https://media.giphy.com/media/xT9IgkKL1SJV8kRrCE/giphy.gif')] opacity-10 mix-blend-overlay pointer-events-none"></div>
+                        </div>
+                    </motion.div>
                 </motion.div>
 
                 {/* Glitch Layers */}

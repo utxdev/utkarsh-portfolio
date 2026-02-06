@@ -12,7 +12,7 @@ const ProjectCard = ({ project, index }) => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
             viewport={{ once: true }}
-            className="group relative w-full rounded-2xl bg-cyber-glass border border-white/10 hover:border-neon-cyan/50 transition-all duration-500 overflow-hidden flex flex-col md:flex-row h-auto md:h-[280px]"
+            className="group relative w-full rounded-2xl bg-cyber-glass border border-white/10 hover:border-neon-cyan/50 hover:shadow-[0_0_30px_rgba(0,240,255,0.1)] transition-all duration-500 overflow-hidden flex flex-col md:flex-row h-auto md:h-[280px]"
         >
             {/* Image Section */}
             <div className="w-full md:w-2/5 h-48 md:h-full relative overflow-hidden">
@@ -110,7 +110,7 @@ const Projects = () => {
     ];
 
     return (
-        <section className="container mx-auto px-4 py-24 max-w-7xl">
+        <section id="projects" className="container mx-auto px-4 py-24 max-w-7xl">
             <div className="flex items-center gap-4 mb-16 border-b border-white/10 pb-4">
                 <Layout className="text-neon-cyan" size={32} />
                 <h3 className="text-3xl font-display font-bold text-white text-glow-cyan">PROJECT_MODULES</h3>
