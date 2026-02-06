@@ -6,12 +6,12 @@ const AudioPlayer = () => {
     const [audioError, setAudioError] = useState(false);
     const audioRef = useRef(null);
 
-    // Local Lo-Fi Loop (Copyright Free)
-    const streamUrl = "/assets/music.mp3";
+    // Cyberpunk Theme (Downloaded from FreeMusicArchive)
+    const streamUrl = "/assets/cyber_bgm.mp3";
 
     useEffect(() => {
         if (audioRef.current) {
-            audioRef.current.volume = 0.05; // Very low volume (5%)
+            audioRef.current.volume = 0.2; // Increase volume slightly for clarity
             if (!isMuted) {
                 const playPromise = audioRef.current.play();
                 if (playPromise !== undefined) {
