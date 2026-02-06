@@ -96,7 +96,7 @@ const Projects = () => {
             desc: "An automated network reconnaissance utility written in Go for high-speed vulnerability mapping. Pathfinder scans target subnets, identifies open ports, fingerprints services, and maps potential attack vectors, feeding data directly into the pentesting workflow.",
             tech: ["Go (Golang)", "Network Scanner", "Vuln Mapping", "Concurrency"],
             icon: <Search size={20} />,
-            img: "https://images.unsplash.com/photo-1558494949-efc5e60dc3bd?auto=format&fit=crop&q=80&w=1000",
+            img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
             links: { github: "https://github.com/utxdev", live: "#" }
         },
         {

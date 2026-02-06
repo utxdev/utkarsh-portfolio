@@ -113,7 +113,7 @@ const BentoGrid = () => {
                 </BentoCard>
 
                 {/* 5. Mission Statement */}
-                <BentoCard className="md:col-span-4 md:row-span-1 min-h-[200px]" img="https://images.unsplash.com/photo-1510511459019-5dda7724fd82?auto=format&fit=crop&q=80&w=2000">
+                <BentoCard className="md:col-span-4 md:row-span-1 min-h-[200px]" img="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2000">
                     <div className="flex flex-col md:flex-row items-center justify-between gap-8 h-full">
                         <div className="flex-1">
                             <div className="flex items-center gap-2 mb-2 text-neon-cyan font-medium">
