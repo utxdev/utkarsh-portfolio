@@ -88,8 +88,11 @@ const Header = () => {
                 className="mt-16"
             >
                 <a
-                    href="/assets/resume.pdf"
-                    download="Utkarsh_Pratham_Resume.pdf"
+                    href="#profile"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        document.getElementById('profile').scrollIntoView({ behavior: 'smooth' });
+                    }}
                     className="relative inline-flex items-center justify-center px-10 py-4 overflow-hidden font-display font-bold text-white transition-all duration-300 bg-transparent border border-neon-violet/50 hover:bg-neon-violet/10 group"
                 >
                     <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-neon-violet rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>

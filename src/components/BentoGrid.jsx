@@ -31,7 +31,7 @@ const BentoCard = ({ children, className, img }) => {
 
 const BentoGrid = () => {
     return (
-        <section className="container mx-auto px-4 py-24 max-w-7xl">
+        <section id="profile" className="container mx-auto px-4 py-24 max-w-7xl">
             <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-6 auto-rows-[minmax(180px,auto)] h-full">
 
                 {/* 1. Identity / Main Profile */}
