@@ -79,7 +79,15 @@ const Header = () => {
                         />
 
                         {/* Hologram Noise/Scanlines */}
-                        <div className="absolute inset-0 bg-[url('https://media.giphy.com/media/xT9IgkKL1SJV8kRrCE/giphy.gif')] opacity-10 mix-blend-screen pointer-events-none" style={{ maskImage: "linear-gradient(to bottom, black 80%, transparent 100%)" }}></div>
+                        {/* Hologram Scanlines */}
+                        <div
+                            className="absolute inset-0 opacity-20 mix-blend-screen pointer-events-none"
+                            style={{
+                                backgroundImage: "linear-gradient(transparent 50%, rgba(0, 240, 255, 0.2) 50%)",
+                                backgroundSize: "100% 4px",
+                                maskImage: "linear-gradient(to bottom, black 80%, transparent 100%)"
+                            }}
+                        ></div>
                     </motion.div>
                 </motion.div>
 
