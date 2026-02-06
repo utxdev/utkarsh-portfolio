@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { Terminal, MapPin, Mail, ChevronDown, Code, Hash, Power } from 'lucide-react';
+import { Terminal, MapPin, Mail, ChevronDown, Code, Hash, Power, Shield } from 'lucide-react';
 
 const Header = () => {
     const { scrollY } = useScroll();
@@ -36,11 +36,10 @@ const Header = () => {
                     <span>System: Online</span>
                 </div>
                 <div className="flex gap-4">
-                    <span>CPU: 34%</span>
-                    <span>MEM: 12GB</span>
+                    <span>OPS: OFFENSIVE</span>
                     <span>NET: SECURE</span>
                 </div>
-                <div>v2.0.26</div>
+                <div>v2.1.0</div>
             </div>
 
             {/* Main Content */}
@@ -64,8 +63,8 @@ const Header = () => {
             >
                 {/* Role Badge */}
                 <div className="px-6 py-2 rounded-none border-x border-neon-cyan/50 bg-black/40 backdrop-blur-sm flex items-center gap-3 shadow-[0_0_15px_rgba(0,240,255,0.2)]">
-                    <Code size={16} className="text-neon-violet" />
-                    <span className="text-neon-cyan font-mono text-sm tracking-[0.2em] uppercase">Cybersecurity & Full Stack</span>
+                    <Shield size={16} className="text-neon-violet" />
+                    <span className="text-neon-cyan font-mono text-sm tracking-[0.2em] uppercase">Cybersecurity Specialist</span>
                     <Hash size={16} className="text-neon-violet" />
                 </div>
 

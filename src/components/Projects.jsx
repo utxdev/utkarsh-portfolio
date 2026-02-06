@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { Layout, GitBranch, ExternalLink, Search, Shield, Database } from 'lucide-react';
+import { Layout, GitBranch, ExternalLink, Search, Shield, Database, Terminal, Globe } from 'lucide-react';
 
 const ProjectCard = ({ project, index }) => {
     const ref = useRef(null);
@@ -102,25 +102,39 @@ const ProjectCard = ({ project, index }) => {
 const Projects = () => {
     const projects = [
         {
-            title: "TRINETRA",
-            desc: "Mobile Forensics Investigation Tool connected to court-admissible reporting.",
-            tech: ["Python", "React 18", "FastAPI", "ADB", "SHA-256"],
-            icon: <Search size={24} />,
-            links: { github: "#", live: "#" }
+            title: "XAENITHRA_PS6",
+            desc: "Advanced PowerShell investigation \u0026 forensic data extraction tool for active incident response.",
+            tech: ["PowerShell", "Forensics", "Live Analysis"],
+            icon: <Terminal size={24} />,
+            links: { github: "https://github.com/utxdev/Xaenithra-ps6-investigation", live: "#" }
         },
         {
-            title: "XAENITHRA",
-            desc: "Automated vulnerability scanner and pentesting suite (Command Center).",
-            tech: ["Go", "gRPC", "Next.js"],
+            title: "CYBER_ECOSYSTEM",
+            desc: "Comprehensive cybersecurity awareness platform featuring 11+ interactive tools (Steganography, OSINT, etc).",
+            tech: ["React", "Vite", "Cyber Tools"],
+            icon: <Globe size={24} />,
+            links: { github: "https://github.com/utxdev/cyber-ecosystem", live: "#" }
+        },
+        {
+            title: "XAENITHRA_ENC",
+            desc: "Custom encryption/encoding framework for secure communication and payload obfuscation.",
+            tech: ["Python", "Cryptography", "Obfuscation"],
             icon: <Shield size={24} />,
-            links: { github: "#", live: "#" }
+            links: { github: "https://github.com/utxdev/Xaenithra-Encoded", live: "#" }
         },
         {
-            title: "INDERJAAL",
-            desc: "Decentralized secure communication protocol for red teams.",
-            tech: ["Rust", "WASM", "libp2p"],
+            title: "PATHFINDER",
+            desc: "Network reconnaissance and vulnerability mapping utility for automated pentesting workflows.",
+            tech: ["Go", "Network Scanning", "Automation"],
+            icon: <Search size={24} />,
+            links: { github: "https://github.com/utxdev", live: "#" }
+        },
+        {
+            title: "COMPANIO",
+            desc: "AI-driven security assistant for real-time threat monitoring and log analysis.",
+            tech: ["AI/ML", "Python", "Log Analysis"],
             icon: <Database size={24} />,
-            links: { github: "#", live: "#" }
+            links: { github: "https://github.com/utxdev", live: "#" }
         }
     ];
 

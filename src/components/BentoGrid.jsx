@@ -59,14 +59,16 @@ const TiltCard = ({ children, className, colSpan = 1, rowSpan = 1 }) => {
 
 const BentoGrid = () => {
     const skills = [
-        "React", "Node.js", "Python", "C++", "Cybersecurity", "Ethical Hacking",
-        "Linux", "Docker", "AWS", "Figma", "Burp Suite"
+        "OSINT", "Steganography", "Digital Forensics", "Web Exploitation",
+        "Cryptography", "Vulnerability Assessment", "Burp Suite", "Metasploit",
+        "Python", "C++", "React", "Node.js", "Linux", "Docker"
     ];
 
-    const timeline = [
-        { role: "Team Leader", org: "Xaenithra", date: "2025 - Present" },
-        { role: "Security Researcher", org: "Cysecsphere", date: "2024 - Present" },
-        // { role: "Contributor", org: "Brainly", date: "2020 - 2022" }
+    const missions = [
+        { name: "SVNIT CTF (MeitY)", rank: "Rank 1", desc: "National Level - Ministry of Electronics & IT" },
+        { name: "IIT Madras Shaastra", rank: "Finalist", desc: "Rank 6 (Quals) / Rank 7 (Finals)" },
+        { name: "Echelon Hackathon", rank: "Finalist", desc: "Advanced Cybersecurity Hackathon" },
+        { name: "Cipher Hunt 2.0", rank: "Rank 7", desc: "Digital Forensics & Puzzle Solving" }
     ];
 
     return (
@@ -89,16 +91,17 @@ const BentoGrid = () => {
                             <Terminal size={14} /> IDENTITY_VERIFIED
                         </div>
                         <h3 className="text-3xl font-display font-bold text-white leading-tight">
-                            Bridging <span className="text-neon-pink">Offensive Security</span> & <span className="text-neon-violet">Creative Dev</span>
+                            <span className="text-neon-pink">Offensive Security</span> Researcher & <span className="text-neon-violet">Creative Dev</span>
                         </h3>
                         <p className="text-gray-400 leading-relaxed font-body">
-                            I build digital fortresses and then I break them. A computer science engineer obsessed with the intersection of aesthetic design and rigorous security.
+                            Specializing in <span className="text-white">OSINT</span>, <span className="text-white">Digital Forensics</span>, and <span className="text-white">Web Exploitation</span>.
+                            I don't just build systems; I dissect them to understand their deepest vulnerabilities.
                         </p>
                     </div>
 
                     <div className="mt-8 flex flex-wrap gap-2">
-                        <span className="px-3 py-1 rounded-full bg-void-purple border border-neon-purple/30 text-xs text-neon-purple font-mono">Rank 1 MeitY CTF</span>
-                        <span className="px-3 py-1 rounded-full bg-void-purple border border-neon-cyan/30 text-xs text-neon-cyan font-mono">Top 10 Cipher Hunt</span>
+                        <span className="px-3 py-1 rounded-full bg-void-purple border border-neon-cyan/30 text-xs text-neon-cyan font-mono shadow-[0_0_10px_rgba(0,240,255,0.3)]">Rank 1 SVNIT MeitY</span>
+                        <span className="px-3 py-1 rounded-full bg-void-purple border border-neon-purple/30 text-xs text-neon-purple font-mono">IIT Madras Finalist</span>
                     </div>
                 </TiltCard>
 
@@ -130,7 +133,7 @@ const BentoGrid = () => {
                     <div className="relative h-full overflow-hidden mask-gradient-y">
                         <div className="animate-marquee-vertical flex flex-col gap-4">
                             {[...skills, ...skills].map((skill, i) => (
-                                <div key={i} className="text-2xl font-display font-bold text-gray-700 uppercase hover:text-white transition-colors cursor-default select-none">
+                                <div key={i} className="text-xl font-display font-bold text-gray-700 uppercase hover:text-white transition-colors cursor-default select-none">
                                     {skill}
                                 </div>
                             ))}
@@ -138,16 +141,17 @@ const BentoGrid = () => {
                     </div>
                 </TiltCard>
 
-                {/* 4. Timeline Node */}
-                <TiltCard className="md:col-span-1 md:row-span-1">
+                {/* 4. Mission Logs (Achievements) */}
+                <TiltCard className="md:col-span-1 md:row-span-1 overflow-y-auto custom-scrollbar">
                     <div className="flex items-center gap-2 text-neon-violet font-mono text-xs tracking-widest mb-4">
-                        <Briefcase size={14} /> CAREER_LOG
+                        <Award size={14} /> MISSION_LOGS
                     </div>
                     <div className="space-y-4">
-                        {timeline.map((job, i) => (
-                            <div key={i} className="flex flex-col">
-                                <span className="text-white font-bold text-sm">{job.role}</span>
-                                <span className="text-xs text-gray-500">{job.org}</span>
+                        {missions.map((mission, i) => (
+                            <div key={i} className="flex flex-col border-l border-white/10 pl-3">
+                                <span className="text-white font-bold text-sm">{mission.name}</span>
+                                <span className="text-xs text-neon-pink font-mono">{mission.rank}</span>
+                                <span className="text-[10px] text-gray-500">{mission.desc}</span>
                             </div>
                         ))}
                     </div>
