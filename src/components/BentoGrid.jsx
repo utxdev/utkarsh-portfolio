@@ -35,7 +35,7 @@ const BentoGrid = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-6 auto-rows-[minmax(180px,auto)] h-full">
 
                 {/* 1. Identity / Main Profile */}
-                <BentoCard className="md:col-span-2 md:row-span-2 min-h-[400px]" img="/assets/profile.png">
+                <BentoCard className="md:col-span-2 md:row-span-2 min-h-[400px]" img="/assets/profile.png?v=updated">
                     <div>
                         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-medium text-white mb-4">
                             <span className="relative flex h-2 w-2">

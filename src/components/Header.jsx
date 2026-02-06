@@ -55,7 +55,7 @@ const Header = () => {
                     <div className="absolute inset-0 rounded-full bg-neon-cyan blur-md opacity-50 animate-pulse"></div>
                     <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-black bg-black">
                         <img
-                            src="/assets/profile.png"
+                            src="/assets/profile.png?v=updated"
                             alt="Utkarsh Pratham"
                             className="w-full h-full object-cover"
                         />
