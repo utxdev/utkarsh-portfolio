@@ -3,7 +3,8 @@ import CyberBackground from './components/CyberBackground';
 import Header from './components/Header';
 import Projects from './components/Projects';
 import GlobalEffects from './components/GlobalEffects';
-import BentoGrid from './components/BentoGrid'; // Added BentoGrid import
+import BentoGrid from './components/BentoGrid';
+import AudioPlayer from './components/AudioPlayer'; // Restored import
 
 const App = () => {
     const [loaded, setLoaded] = useState(false);
