@@ -72,7 +72,7 @@ const Projects = () => {
             desc: "Advanced PowerShell investigation & forensic data extraction tool for active incident response.",
             tech: ["PowerShell", "Forensics", "Live Analysis"],
             icon: <Terminal size={20} />,
-            img: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?auto=format&fit=crop&q=80&w=1000",
+            img: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1000",
             links: { github: "https://github.com/utxdev/Xaenithra-ps6-investigation", live: "#" }
         },
         {
@@ -88,7 +88,7 @@ const Projects = () => {
             desc: "Custom encryption/encoding framework for secure communication and payload obfuscation.",
             tech: ["Python", "Cryptography", "Obfuscation"],
             icon: <Shield size={20} />,
-            img: "https://images.unsplash.com/photo-1510915361894-db8b60106cb1?auto=format&fit=crop&q=80&w=1000",
+            img: "https://images.unsplash.com/photo-1558494949-efc5e60dc3bd?auto=format&fit=crop&q=80&w=1000",
             links: { github: "https://github.com/utxdev/Xaenithra-Encoded", live: "#" }
         },
         {
@@ -96,7 +96,7 @@ const Projects = () => {
             desc: "Network reconnaissance and vulnerability mapping utility for automated pentesting workflows.",
             tech: ["Go", "Network Scanning", "Automation"],
             icon: <Search size={20} />,
-            img: "https://images.unsplash.com/photo-1558494949-efc5e60dc3bd?auto=format&fit=crop&q=80&w=1000",
+            img: "https://images.unsplash.com/photo-1510511459019-5dda7724fd82?auto=format&fit=crop&q=80&w=1000",
             links: { github: "https://github.com/utxdev", live: "#" }
         },
         {
@@ -104,7 +104,7 @@ const Projects = () => {
             desc: "AI-driven security assistant for real-time threat monitoring and log analysis.",
             tech: ["AI/ML", "Python", "Log Analysis"],
             icon: <Database size={20} />,
-            img: "https://images.unsplash.com/photo-1535378437327-10f797d1901a?auto=format&fit=crop&q=80&w=1000",
+            img: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&q=80&w=1000",
             links: { github: "https://github.com/utxdev", live: "#" }
         }
     ];
