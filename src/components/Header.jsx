@@ -54,10 +54,14 @@ const Header = () => {
                         initial={{ scale: 0, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="relative w-48 h-48 md:w-56 md:h-56 mb-8 rounded-full p-1 bg-gradient-to-tr from-neon-cyan via-white to-neon-violet shadow-[0_0_50px_rgba(139,92,246,0.3)]"
+                        className="relative w-48 h-48 md:w-56 md:h-56 mb-8 p-1 bg-gradient-to-tr from-neon-cyan via-white to-neon-violet shadow-[0_0_50px_rgba(139,92,246,0.3)]"
+                        style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
                     >
-                        <div className="absolute inset-0 rounded-full bg-neon-cyan blur-md opacity-50 animate-pulse"></div>
-                        <div className="relative w-full h-full rounded-full overflow-hidden border-4 border-black bg-black shadow-[inset_0_0_20px_rgba(0,240,255,0.2)]">
+                        <div className="absolute inset-0 bg-neon-cyan blur-md opacity-50 animate-pulse"></div>
+                        <div
+                            className="relative w-full h-full border-4 border-black bg-black shadow-[inset_0_0_20px_rgba(0,240,255,0.2)] overflow-hidden"
+                            style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
+                        >
                             <img
                                 src="/assets/profile.png?v=updated"
                                 alt="Utkarsh Pratham"
@@ -119,25 +123,18 @@ const Header = () => {
                             e.preventDefault();
                             document.getElementById('profile').scrollIntoView({ behavior: 'smooth' });
                         }}
-                        className="relative inline-flex items-center justify-center px-10 py-4 overflow-hidden font-display font-bold text-white transition-all duration-300 bg-transparent border border-neon-violet/50 hover:bg-neon-violet/10 group"
+                        className="relative inline-flex items-center justify-center px-10 py-4 overflow-hidden font-display font-bold text-white transition-all duration-300 bg-neon-violet border border-neon-violet hover:bg-neon-violet/80 hover:shadow-[0_0_30px_rgba(189,0,255,0.6)] group rounded-lg"
                     >
-                        <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-neon-violet rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
-                        <span className="relative flex items-center gap-3 text-neon-violet group-hover:text-white transition-colors">
+                        <span className="relative flex items-center gap-3">
                             <Terminal size={20} />
                             INITIALIZE_PROFILE
                         </span>
-
-                        {/* Corners */}
-                        <span className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-neon-cyan"></span>
-                        <span className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-neon-cyan"></span>
-                        <span className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-neon-cyan"></span>
-                        <span className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-neon-cyan"></span>
                     </a>
 
                     <a
                         href="/assets/resume.pdf"
                         download="Utkarsh_Pratham_Resume.pdf"
-                        className="flex items-center gap-3 px-8 py-4 rounded-none border border-neon-cyan bg-neon-cyan/10 text-neon-cyan font-bold font-display hover:bg-neon-cyan hover:text-black hover:shadow-[0_0_30px_rgba(0,240,255,0.6)] transition-all duration-300 backdrop-blur-md"
+                        className="flex items-center gap-3 px-8 py-4 rounded-lg border border-neon-cyan bg-neon-cyan text-black font-bold font-display hover:bg-neon-cyan/80 hover:shadow-[0_0_30px_rgba(0,240,255,0.6)] transition-all duration-300"
                     >
                         <Download size={20} />
                         <span>DOWNLOAD_RESUME</span>

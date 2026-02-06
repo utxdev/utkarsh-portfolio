@@ -8,6 +8,7 @@ import GlobalEffects from './components/GlobalEffects';
 import BentoGrid from './components/BentoGrid';
 import Achievements from './components/Achievements';
 import AudioPlayer from './components/AudioPlayer';
+import CyberOverlay from './components/CyberOverlay';
 
 const App = () => {
     const [loaded, setLoaded] = useState(false);
@@ -18,6 +19,7 @@ const App = () => {
 
     return (
         <div className={`min-h-screen bg-void-DEFAULT text-white font-body selection:bg-neon-violet/30 selection:text-white overflow-x-hidden transition-opacity duration-1000 ${loaded ? 'opacity-100' : 'opacity-0'}`}>
+            <CyberOverlay />
             <CyberBackground />
             <GlobalEffects />
             <AudioPlayer />

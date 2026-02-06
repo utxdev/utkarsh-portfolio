@@ -74,6 +74,7 @@ const BentoGrid = () => {
 
                     <div>
                         <h3 className="text-white font-bold text-2xl mb-1">Rank 1</h3>
+                        <div className="text-gray-400 text-xs mb-1">Team Leader @ <a href="https://xaenithra.com" target="_blank" className="text-neon-cyan hover:underline">Xaenithra</a></div>
                         <p className="text-neon-violet font-medium mb-4">SVNIT MeitY CTF</p>
                         <p className="text-gray-400 text-sm">
                             Secured first rank at the national level Capture The Flag event organized by the Ministry of Electronics & IT.
