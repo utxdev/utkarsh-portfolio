@@ -116,25 +116,41 @@ const BentoGrid = () => {
                     </div>
                 </BentoCard>
 
-                {/* 5. Mission Statement */}
-                <BentoCard className="md:col-span-4 md:row-span-1 min-h-[200px]" img="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=2000">
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-8 h-full">
-                        <div className="flex-1">
-                            <div className="flex items-center gap-2 mb-2 text-neon-cyan font-medium">
-                                <Shield size={18} />
-                                <span>MISSION OBJECTIVE</span>
+                {/* 5. Mission Objective - Tactical Terminal */}
+                <BentoCard className="md:col-span-4 md:row-span-1 min-h-[200px] bg-black border border-neon-cyan/20">
+                    <div className="h-full flex flex-col justify-between font-mono relative overflow-hidden">
+                        {/* Terminal Header */}
+                        <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
+                            <div className="flex gap-2">
+                                <div className="w-3 h-3 rounded-full bg-red-500/50"></div>
+                                <div className="w-3 h-3 rounded-full bg-yellow-500/50"></div>
+                                <div className="w-3 h-3 rounded-full bg-green-500/50"></div>
                             </div>
-                            <h3 className="text-2xl md:text-3xl font-bold text-white max-w-2xl">
-                                "The only way to truly secure a system is to understand how to break it."
-                            </h3>
+                            <div className="text-[10px] text-gray-500 tracking-widest">USR: UTKARSH // MISSION_01</div>
                         </div>
-                        <div className="flex-shrink-0">
-                            <button
-                                onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
-                                className="px-8 py-4 rounded-full bg-black/50 border border-neon-cyan/50 text-neon-cyan font-bold hover:bg-neon-cyan hover:text-black hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] transition-all duration-300 backdrop-blur-md"
-                            >
-                                VIEW_OPERATIONS
-                            </button>
+
+                        {/* Terminal Body */}
+                        <div className="flex-1 flex flex-col md:flex-row items-center justify-between gap-8 z-10">
+                            <div className="max-w-3xl">
+                                <div className="text-neon-cyan text-xs mb-2">$ cat mission_statement.txt</div>
+                                <h3 className="text-xl md:text-2xl text-gray-300 leading-relaxed type-writer">
+                                    &gt; "The only way to truly secure a system is to understand how to break it."<span className="animate-pulse bg-neon-cyan w-2 h-5 inline-block ml-1 align-middle"></span>
+                                </h3>
+                            </div>
+
+                            <div className="flex-shrink-0">
+                                <button
+                                    onClick={() => document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' })}
+                                    className="px-6 py-3 bg-neon-cyan/10 border border-neon-cyan text-neon-cyan text-xs font-bold hover:bg-neon-cyan hover:text-black transition-all uppercase tracking-widest"
+                                >
+                                    [ EXECUTE_OPERATIONS ]
+                                </button>
+                            </div>
+                        </div>
+
+                        {/* Background Decor */}
+                        <div className="absolute right-0 bottom-0 text-[10rem] text-white/5 font-black leading-none pointer-events-none select-none -z-0">
+                            ./ROOT
                         </div>
                     </div>
                 </BentoCard>

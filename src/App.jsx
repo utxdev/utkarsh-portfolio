@@ -6,9 +6,9 @@ import TechArsenal from './components/TechArsenal';
 import Connect from './components/Connect';
 import GlobalEffects from './components/GlobalEffects';
 import BentoGrid from './components/BentoGrid';
-import Achievements from './components/Achievements';
-import AudioPlayer from './components/AudioPlayer';
+import Credentials from './components/Credentials';
 import CyberOverlay from './components/CyberOverlay';
+import AudioPlayer from './components/AudioPlayer';
 
 const App = () => {
     const [loaded, setLoaded] = useState(false);
@@ -27,6 +27,7 @@ const App = () => {
             <main className="relative z-10 w-full overflow-hidden">
                 <Header />
                 <BentoGrid />
+                <Credentials />
                 <Achievements />
                 <TechArsenal />
                 <Projects />

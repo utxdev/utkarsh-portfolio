@@ -45,31 +45,41 @@ const Header = () => {
             {/* Main Content */}
             <div className="relative group flex flex-col items-center">
 
-                {/* Holographic Avatar with Breathing Animation */}
+                {/* Borderless 3D Holographic Projection */}
                 <motion.div
                     animate={{ y: [-10, 10, -10] }}
                     transition={{ repeat: Infinity, duration: 6, ease: "easeInOut" }}
+                    className="relative z-20 mb-8"
                 >
                     <motion.div
-                        initial={{ scale: 0, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        className="relative w-48 h-48 md:w-56 md:h-56 mb-8 p-1 bg-gradient-to-tr from-neon-cyan via-white to-neon-violet shadow-[0_0_50px_rgba(139,92,246,0.3)]"
-                        style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
+                        initial={{ scale: 0, opacity: 0, rotateX: 45 }}
+                        animate={{ scale: 1, opacity: 1, rotateX: 0 }}
+                        transition={{ duration: 1, ease: "easeOut" }}
+                        className="relative w-64 h-64 md:w-72 md:h-72"
+                        style={{
+                            perspective: "1000px",
+                            transformStyle: "preserve-3d"
+                        }}
                     >
-                        <div className="absolute inset-0 bg-neon-cyan blur-md opacity-50 animate-pulse"></div>
-                        <div
-                            className="relative w-full h-full border-4 border-black bg-black shadow-[inset_0_0_20px_rgba(0,240,255,0.2)] overflow-hidden"
-                            style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
-                        >
-                            <img
-                                src="/assets/profile.png?v=updated"
-                                alt="Utkarsh Pratham"
-                                className="w-full h-full object-cover brightness-110 contrast-110"
-                            />
-                            {/* Scanline Overlay - Reduced Opacity */}
-                            <div className="absolute inset-0 bg-[url('https://media.giphy.com/media/xT9IgkKL1SJV8kRrCE/giphy.gif')] opacity-5 mix-blend-overlay pointer-events-none"></div>
-                        </div>
+                        {/* Projector Light Base */}
+                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-neon-cyan/50 blur-sm rounded-full shadow-[0_0_20px_rgba(0,240,255,0.8)]"></div>
+                        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[60px] border-r-[60px] border-b-[100px] border-l-transparent border-r-transparent border-b-neon-cyan/10 blur-xl transform -scale-y-100 origin-bottom"></div>
+
+                        {/* The Image (Projected) */}
+                        <motion.img
+                            src="/assets/profile.png?v=updated"
+                            alt="Utkarsh Pratham"
+                            className="w-full h-full object-contain drop-shadow-[0_0_15px_rgba(0,240,255,0.3)]"
+                            style={{
+                                maskImage: "linear-gradient(to bottom, black 80%, transparent 100%)",
+                                WebkitMaskImage: "linear-gradient(to bottom, black 80%, transparent 100%)"
+                            }}
+                            animate={{ opacity: [0.8, 1, 0.8] }}
+                            transition={{ repeat: Infinity, duration: 3 }}
+                        />
+
+                        {/* Hologram Noise/Scanlines */}
+                        <div className="absolute inset-0 bg-[url('https://media.giphy.com/media/xT9IgkKL1SJV8kRrCE/giphy.gif')] opacity-10 mix-blend-screen pointer-events-none" style={{ maskImage: "linear-gradient(to bottom, black 80%, transparent 100%)" }}></div>
                     </motion.div>
                 </motion.div>
 
