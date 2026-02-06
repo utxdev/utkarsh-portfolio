@@ -21,8 +21,8 @@ const GlobalEffects = () => {
 
     return (
         <>
-            {/* SVG Noise Filter using feTurbulence */}
-            <div className="fixed inset-0 z-[50] pointer-events-none opacity-20 mix-blend-overlay">
+            {/* SVG Noise Filter */}
+            <div className="fixed inset-0 z-[40] pointer-events-none opacity-20 mix-blend-overlay">
                 <svg className='w-full h-full'>
                     <filter id='noiseFilter'>
                         <feTurbulence
@@ -35,6 +35,10 @@ const GlobalEffects = () => {
                     <rect width='100%' height='100%' filter='url(#noiseFilter)' />
                 </svg>
             </div>
+
+            {/* Global Overlays */}
+            <div className="scanlines fixed inset-0 z-[50] pointer-events-none opacity-20"></div>
+            <div className="vignette fixed inset-0 z-[40] pointer-events-none"></div>
 
             {/* Custom Cursor Glow */}
             <motion.div

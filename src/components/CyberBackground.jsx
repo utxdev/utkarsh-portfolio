@@ -20,8 +20,16 @@ const CyberBackground = () => {
     const particles = [];
     const particleCount = 200; // Increased density for a richer look
 
-    // Colors: Neon Cyan, Neon Pink, Deep Purple, White
-    const colors = ['#00F0FF', '#FF003C', '#BD00FF', '#FFFFFF'];
+    // Colors: Neon Cyan, Neon Pink, Electric Violet, Holographic Gold
+    const colors = ['#00F0FF', '#BD00FF', '#7DF9FF', '#FFD700', '#ffffff'];
+
+    // Mouse interaction
+    const mouse = { x: null, y: null, radius: 150 };
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.x;
+      mouse.y = e.y;
+    });
 
     class Particle {
       constructor() {
@@ -31,30 +39,59 @@ const CyberBackground = () => {
       reset() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 0.5; // Varying small to medium sizes
-        this.speedX = Math.random() * 0.6 - 0.3; // Slightly faster movement
-        this.speedY = Math.random() * 0.6 - 0.3;
+        this.size = Math.random() * 2 + 0.5;
+        this.baseX = this.x;
+        this.baseY = this.y;
+        this.density = (Math.random() * 30) + 1;
+        this.speedX = Math.random() * 0.5 - 0.25;
+        this.speedY = Math.random() * 0.5 - 0.25;
         this.color = colors[Math.floor(Math.random() * colors.length)];
-        this.opacity = Math.random() * 0.7 + 0.2; // Higher base opacity
-        this.life = Math.random() * 150 + 150; // Longer lifespan
+        this.opacity = Math.random() * 0.5 + 0.2;
       }
 
       update() {
+        // Ambient movement
         this.x += this.speedX;
         this.y += this.speedY;
-        this.life--;
-        this.opacity = Math.min(this.life / 75, this.opacity); // Fade out more gradually
 
-        // Wrap around screen
-        if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height || this.life < 0) {
-          this.reset();
+        // Mouse interaction
+        if (mouse.x != null) {
+          let dx = mouse.x - this.x;
+          let dy = mouse.y - this.y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
+
+          if (distance < mouse.radius) {
+            const forceDirectionX = dx / distance;
+            const forceDirectionY = dy / distance;
+            const force = (mouse.radius - distance) / mouse.radius;
+            const directionX = forceDirectionX * force * this.density;
+            const directionY = forceDirectionY * force * this.density;
+
+            this.x -= directionX;
+            this.y -= directionY;
+          } else {
+            if (this.x !== this.baseX) {
+              let dx = this.x - this.baseX;
+              this.x -= dx / 10;
+            }
+            if (this.y !== this.baseY) {
+              let dy = this.y - this.baseY;
+              this.y -= dy / 10;
+            }
+          }
         }
+
+        // Wrap around
+        if (this.x < 0) this.x = canvas.width;
+        if (this.x > canvas.width) this.x = 0;
+        if (this.y < 0) this.y = canvas.height;
+        if (this.y > canvas.height) this.y = 0;
       }
 
       draw() {
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        ctx.shadowBlur = 15; // Increased blur for more glow
+        ctx.shadowBlur = 10;
         ctx.shadowColor = this.color;
         ctx.fillStyle = this.color;
         ctx.globalAlpha = this.opacity;
@@ -69,10 +106,9 @@ const CyberBackground = () => {
       particles.push(new Particle());
     }
 
-    // Animation Loop
     const animate = () => {
-      // Deep Void Background with slight trail
-      ctx.fillStyle = 'rgba(5, 0, 20, 0.2)'; // void-DEFAULT with opacity
+      // Clear with trail effect
+      ctx.fillStyle = 'rgba(5, 0, 20, 0.1)';
       ctx.fillRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach(p => {
@@ -80,15 +116,22 @@ const CyberBackground = () => {
         p.draw();
       });
 
-      // Random "Cyber Glitch" Horizontal Lines - Neon Cyan
-      if (Math.random() > 0.95) { // More frequent glitches
-        const y = Math.random() * canvas.height;
-        const h = Math.random() * 3 + 1; // Thicker glitches
-        const w = Math.random() * canvas.width;
-        const x = Math.random() * canvas.width;
+      // Connect particles
+      for (let a = 0; a < particles.length; a++) {
+        for (let b = a; b < particles.length; b++) {
+          let dx = particles[a].x - particles[b].x;
+          let dy = particles[a].y - particles[b].y;
+          let distance = Math.sqrt(dx * dx + dy * dy);
 
-        ctx.fillStyle = 'rgba(0, 240, 255, 0.1)'; // Neon Cyan stronger
-        ctx.fillRect(x, y, w, h);
+          if (distance < 100) {
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(125, 249, 255, ${0.1 - distance / 1000})`; // Neon Violet connection
+            ctx.lineWidth = 0.5;
+            ctx.moveTo(particles[a].x, particles[a].y);
+            ctx.lineTo(particles[b].x, particles[b].y);
+            ctx.stroke();
+          }
+        }
       }
 
       animationFrameId = requestAnimationFrame(animate);

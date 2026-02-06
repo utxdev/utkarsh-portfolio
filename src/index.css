@@ -9,10 +9,34 @@
     }
 
     .text-glow-cyan {
-        text-shadow: 0 0 10px #00F0FF;
+        text-shadow: 0 0 10px #00F0FF, 0 0 20px #00F0FF;
     }
 
-    .text-glow-pink {
-        text-shadow: 0 0 10px #FF003C;
+    .text-glow-purple {
+        text-shadow: 0 0 10px #BD00FF, 0 0 20px #BD00FF;
+    }
+
+    .text-glow-gold {
+        text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700;
+    }
+
+    /* CRT Scanline Overlay */
+    .scanlines {
+        background: linear-gradient(to bottom,
+                rgba(255, 255, 255, 0),
+                rgba(255, 255, 255, 0) 50%,
+                rgba(0, 0, 0, 0.2) 50%,
+                rgba(0, 0, 0, 0.2));
+        background-size: 100% 4px;
+        animation: scanline 0.2s linear infinite;
+        pointer-events: none;
+        z-index: 50;
+    }
+
+    /* Vignette */
+    .vignette {
+        background: radial-gradient(circle, rgba(0, 0, 0, 0) 60%, rgba(15, 2, 32, 0.9) 100%);
+        pointer-events: none;
+        z-index: 40;
     }
 }

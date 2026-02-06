@@ -1,179 +1,172 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { MapPin, Mail, Linkedin, Terminal, Cpu, Shield, Award, Briefcase, GraduationCap } from 'lucide-react';
+import React, { useRef } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { MapPin, Briefcase, Cpu, Award, Terminal, Code, Globe, Shield } from 'lucide-react';
 
-const BentoGrid = () => {
-    // Data
-    const skills = [
-        "C++", "Python", "JavaScript", "TypeScript", "React", "Node.js",
-        "Burp Suite", "Metasploit", "Wireshark", "Linux", "Docker", "AWS",
-        "GenAI", "Prompt Engineering", "Forensics", "Web Security"
-    ];
+const TiltCard = ({ children, className, colSpan = 1, rowSpan = 1 }) => {
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
 
-    const experience = [
-        { role: "Team Leader", org: "Xaenithra", date: "09/2025 - Present", active: true },
-        { role: "Core Member", org: "Cysecsphere Club", date: "Present" },
-        { role: "Contributor", org: "Brainly.in", date: "2020 - 2022" }
-    ];
+    const mouseX = useSpring(x, { stiffness: 500, damping: 100 });
+    const mouseY = useSpring(y, { stiffness: 500, damping: 100 });
 
-    const certs = [
-        { name: "Certified AppSec Practitioner (CAP)", issuer: "The SecOps Group" },
-        { name: "Pre Security Certificate", issuer: "TryHackMe" },
-        { name: "Cybersecurity Analyst", issuer: "Tata / Forage" },
-        { name: "Google Cloud Compute", issuer: "Google" }
-    ];
+    const rotateX = useTransform(mouseY, [-0.5, 0.5], ["17.5deg", "-17.5deg"]);
+    const rotateY = useTransform(mouseX, [-0.5, 0.5], ["-17.5deg", "17.5deg"]);
 
-    const boxStyle = "bg-cyber-glass border border-white/5 p-6 rounded-3xl backdrop-blur-md hover:border-white/10 transition-colors group relative overflow-hidden";
+    const handleMouseMove = (e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const width = rect.width;
+        const height = rect.height;
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+        const xPct = mouseX / width - 0.5;
+        const yPct = mouseY / height - 0.5;
+        x.set(xPct);
+        y.set(yPct);
+    };
+
+    const handleMouseLeave = () => {
+        x.set(0);
+        y.set(0);
+    };
 
     return (
-        <section className="container mx-auto px-4 py-20 max-w-7xl">
-            <h2 className="text-4xl md:text-6xl font-display font-bold text-white mb-16 text-center">
-                <span className="text-neon-purple">SYSTEM</span>_OVERVIEW
-            </h2>
+        <motion.div
+            style={{
+                rotateX,
+                rotateY,
+                transformStyle: "preserve-3d",
+            }}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            className={`relative ${className} group`}
+        >
+            <div className={`
+                absolute inset-0 rounded-3xl bg-cyber-glass backdrop-blur-xl border border-white/10 shadow-lg
+                group-hover:shadow-[0_0_30px_rgba(125,249,255,0.15)] transition-shadow duration-500
+                overflow-hidden z-0
+            `} style={{ transform: "translateZ(0px)" }}>
+                {/* HOLOGRAPHIC BORDER GRADIENT */}
+                <div className="absolute inset-0 rounded-3xl ring-1 ring-inset ring-white/10 group-hover:ring-white/20" />
+                <div className="absolute -inset-[1px] rounded-3xl bg-gradient-to-r from-neon-cyan via-neon-purple to-neon-pink opacity-0 group-hover:opacity-30 blur-sm transition-opacity duration-500" />
+            </div>
+
+            <div className="relative z-10 h-full p-6 flex flex-col justify-between" style={{ transform: "translateZ(20px)" }}>
+                {children}
+            </div>
+        </motion.div>
+    );
+};
+
+const BentoGrid = () => {
+    const skills = [
+        "React", "Node.js", "Python", "C++", "Cybersecurity", "Ethical Hacking",
+        "Linux", "Docker", "AWS", "Figma", "Burp Suite"
+    ];
+
+    const timeline = [
+        { role: "Team Leader", org: "Xaenithra", date: "2025 - Present" },
+        { role: "Security Researcher", org: "Cysecsphere", date: "2024 - Present" },
+        // { role: "Contributor", org: "Brainly", date: "2020 - 2022" }
+    ];
+
+    return (
+        <section className="container mx-auto px-4 py-20 max-w-7xl perspective-2000">
+            <div className="flex items-center justify-center gap-4 mb-16">
+                <div className="h-[2px] w-24 bg-gradient-to-r from-transparent to-neon-purple" />
+                <h2 className="text-4xl md:text-5xl font-display font-bold text-white text-center tracking-tight">
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-cyan">SYSTEM</span>_NODES
+                </h2>
+                <div className="h-[2px] w-24 bg-gradient-to-l from-transparent to-neon-purple" />
+            </div>
 
             <div className="grid grid-cols-1 md:grid-cols-4 md:grid-rows-3 gap-6 auto-rows-[minmax(180px,auto)]">
 
-                {/* 1. Summary (Large - 2x2) */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    className={`${boxStyle} md:col-span-2 md:row-span-2 flex flex-col justify-between`}
-                >
-                    <div className="absolute top-0 right-0 p-32 bg-neon-purple/20 blur-[100px] rounded-full pointer-events-none" />
+                {/* 1. Identity Node (Large) */}
+                <TiltCard className="md:col-span-2 md:row-span-2 h-full">
+                    <div className="absolute top-0 right-0 p-32 bg-neon-purple/20 blur-[80px] rounded-full pointer-events-none mix-blend-screen" />
+                    <div className="space-y-4">
+                        <div className="flex items-center gap-2 text-neon-cyan font-mono text-xs tracking-widest">
+                            <Terminal size={14} /> IDENTITY_VERIFIED
+                        </div>
+                        <h3 className="text-3xl font-display font-bold text-white leading-tight">
+                            Bridging <span className="text-neon-pink">Offensive Security</span> & <span className="text-neon-violet">Creative Dev</span>
+                        </h3>
+                        <p className="text-gray-400 leading-relaxed font-body">
+                            I build digital fortresses and then I break them. A computer science engineer obsessed with the intersection of aesthetic design and rigorous security.
+                        </p>
+                    </div>
+
+                    <div className="mt-8 flex flex-wrap gap-2">
+                        <span className="px-3 py-1 rounded-full bg-void-purple border border-neon-purple/30 text-xs text-neon-purple font-mono">Rank 1 MeitY CTF</span>
+                        <span className="px-3 py-1 rounded-full bg-void-purple border border-neon-cyan/30 text-xs text-neon-cyan font-mono">Top 10 Cipher Hunt</span>
+                    </div>
+                </TiltCard>
+
+                {/* 2. Status Node */}
+                <TiltCard className="md:col-span-1 md:row-span-1">
+                    <div className="flex justify-between items-start">
+                        <div className="p-3 bg-neon-cyan/10 rounded-xl text-neon-cyan border border-neon-cyan/20">
+                            <MapPin size={20} />
+                        </div>
+                        <div className="flex items-center gap-1.5">
+                            <span className="relative flex h-2 w-2">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                            </span>
+                            <span className="text-xs text-green-400 font-mono tracking-wider">AVAILABLE</span>
+                        </div>
+                    </div>
                     <div>
-                        <div className="flex items-center gap-2 mb-4 text-neon-cyan font-mono text-sm">
-                            <Terminal size={16} />
-                            <span>WHOAMI</span>
-                        </div>
-                        <p className="text-lg md:text-xl font-body font-medium text-gray-300 leading-relaxed">
-                            Driven <span className="text-white font-bold">Computer Science Engineer</span> specializing in <span className="text-neon-pink">Cybersecurity</span> with a "First Principles" approach.
-                            Bridging the gap between <span className="text-neon-cyan">Offensive Security</span> and <span className="text-white">Full-Stack Development</span>.
-                        </p>
-                        <p className="mt-4 text-sm text-gray-400 leading-relaxed">
-                            Proven track record in competitive hacking (Top 10 Cipher Hunt 2.0, Rank 1 MeitY CTF) and building secure, scalable systems like the Xaenithra Command Center. Certified AppSec Practitioner (CAP).
-                        </p>
+                        <div className="text-2xl font-bold text-white mt-4">New Delhi</div>
+                        <div className="text-xs text-gray-500 font-mono mt-1">lat: 28.6139° N</div>
                     </div>
-                    <div className="mt-8 relative z-10">
-                        <div className="flex flex-wrap gap-2 text-sm font-mono text-gray-400">
-                            <span className="bg-black/30 px-3 py-1 rounded-full border border-white/5 text-neon-cyan">Rank 1 MeitY CTF</span>
-                            <span className="bg-black/30 px-3 py-1 rounded-full border border-white/5">Finalist Echelon</span>
-                            <span className="bg-black/30 px-3 py-1 rounded-full border border-white/5 text-neon-pink">Top 10 Cipher Hunt</span>
-                        </div>
-                    </div>
-                </motion.div>
+                </TiltCard>
 
-                {/* 2. Education (1x1) */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.1 }}
-                    viewport={{ once: true }}
-                    className={`${boxStyle} md:col-span-1 md:row-span-1`}
-                >
-                    <div className="flex items-center gap-2 mb-4 text-neon-pink font-mono text-sm">
-                        <GraduationCap size={16} />
-                        <span>EDUCATION</span>
+                {/* 3. Tech Stack Marquee */}
+                <TiltCard className="md:col-span-1 md:row-span-2 overflow-hidden">
+                    <div className="flex items-center gap-2 text-neon-pink font-mono text-xs tracking-widest mb-6">
+                        <Cpu size={14} /> ARSENAL
                     </div>
-                    <h3 className="text-lg font-bold text-white mb-1">B.E. CSE (Hons)</h3>
-                    <p className="text-sm text-gray-400">Chandigarh University</p>
-                    <div className="mt-2 text-xs text-neon-purple font-mono border-l-2 border-neon-purple pl-2">
-                        Cybersecurity with IBM
-                        <br />
-                        <span className="text-gray-500">2025 - 2029</span>
-                    </div>
-                </motion.div>
-
-                {/* 3. Location / Status (1x1) */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    viewport={{ once: true }}
-                    className={`${boxStyle} md:col-span-1 md:row-span-1 flex flex-col justify-center items-center text-center`}
-                >
-                    <MapPin size={32} className="text-neon-cyan mb-2" />
-                    <h3 className="text-lg font-bold text-white">New Delhi, IN</h3>
-                    <div className="mt-2 flex items-center gap-2">
-                        <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                        <span className="text-xs text-gray-400 font-mono">OPEN TO WORK</span>
-                    </div>
-                </motion.div>
-
-                {/* 4. Experience (Simplified Timeline) (1x2) */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    viewport={{ once: true }}
-                    className={`${boxStyle} md:col-span-1 md:row-span-2 overflow-y-auto custom-scrollbar`}
-                >
-                    <div className="flex items-center gap-2 mb-6 text-neon-cyan font-mono text-sm">
-                        <Briefcase size={16} />
-                        <span>EXPERIENCE</span>
-                    </div>
-                    <div className="space-y-6 relative">
-                        {/* Vertical Line */}
-                        <div className="absolute left-1.5 top-2 bottom-2 w-0.5 bg-white/10" />
-
-                        {experience.map((exp, i) => (
-                            <div key={i} className="relative pl-6">
-                                <div className={`absolute left-0 top-1.5 w-3.5 h-3.5 rounded-full border-2 ${exp.active ? 'bg-neon-cyan border-neon-cyan shadow-[0_0_10px_rgba(0,240,255,0.5)]' : 'bg-black border-gray-600'}`} />
-                                <h4 className="text-white font-bold text-sm">{exp.role}</h4>
-                                <p className="text-xs text-gray-400">{exp.org}</p>
-                                <p className="text-[10px] text-gray-500 font-mono mt-1">{exp.date}</p>
-                            </div>
-                        ))}
-                    </div>
-                </motion.div>
-
-                {/* 5. Skills Marquee (2x1) */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.4 }}
-                    viewport={{ once: true }}
-                    className={`${boxStyle} md:col-span-2 md:row-span-1 overflow-hidden flex flex-col justify-center`}
-                >
-                    <div className="flex items-center gap-2 mb-4 text-neon-pink font-mono text-sm">
-                        <Cpu size={16} />
-                        <span>ARSENAL</span>
-                    </div>
-                    <div className="relative flex overflow-x-hidden group">
-                        <div className="animate-marquee whitespace-nowrap flex gap-4">
+                    <div className="relative h-full overflow-hidden mask-gradient-y">
+                        <div className="animate-marquee-vertical flex flex-col gap-4">
                             {[...skills, ...skills].map((skill, i) => (
-                                <span key={i} className="text-xl md:text-2xl font-display font-bold text-white/20 uppercase hover:text-white hover:text-glow-cyan transition-colors cursor-default">
+                                <div key={i} className="text-2xl font-display font-bold text-gray-700 uppercase hover:text-white transition-colors cursor-default select-none">
                                     {skill}
-                                </span>
+                                </div>
                             ))}
                         </div>
-                        <div className="absolute top-0 right-0 w-32 h-full bg-gradient-to-l from-black/80 to-transparent pointer-events-none" />
-                        <div className="absolute top-0 left-0 w-32 h-full bg-gradient-to-r from-black/80 to-transparent pointer-events-none" />
                     </div>
-                </motion.div>
+                </TiltCard>
 
-                {/* 6. Certifications (1x1) */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5 }}
-                    viewport={{ once: true }}
-                    className={`${boxStyle} md:col-span-1 md:row-span-1 overflow-y-auto custom-scrollbar`}
-                >
-                    <div className="flex items-center gap-2 mb-4 text-neon-purple font-mono text-sm">
-                        <Award size={16} />
-                        <span>CERTS</span>
+                {/* 4. Timeline Node */}
+                <TiltCard className="md:col-span-1 md:row-span-1">
+                    <div className="flex items-center gap-2 text-neon-violet font-mono text-xs tracking-widest mb-4">
+                        <Briefcase size={14} /> CAREER_LOG
                     </div>
-                    <div className="flex flex-col gap-3">
-                        {certs.map((cert, i) => (
-                            <div key={i} className="flex flex-col text-xs text-gray-300 border-l border-white/10 pl-2">
-                                <span className="font-bold text-white">{cert.name}</span>
-                                <span className="text-gray-500">{cert.issuer}</span>
+                    <div className="space-y-4">
+                        {timeline.map((job, i) => (
+                            <div key={i} className="flex flex-col">
+                                <span className="text-white font-bold text-sm">{job.role}</span>
+                                <span className="text-xs text-gray-500">{job.org}</span>
                             </div>
                         ))}
                     </div>
-                </motion.div>
+                </TiltCard>
 
+                {/* 5. Rich Media / Education */}
+                <TiltCard className="md:col-span-2 md:row-span-1 group/media overflow-hidden">
+                    {/* Placeholder for "Images so many omg stuffs" - using a gradient pattern for now */}
+                    <div className="absolute inset-0 bg-gradient-to-br from-neon-purple/20 to-black mix-blend-overlay z-0" />
+                    <div className="absolute inset-0 bg-[url('https://media.giphy.com/media/26tn33aiTi1jkl6H6/giphy.gif?cid=ecf05e478z29d4g882046420359858593452077038')] bg-cover bg-center opacity-10 group-hover/media:opacity-30 transition-opacity duration-700" />
+
+                    <div className="relative z-10 flex flex-col justify-end h-full">
+                        <div className="flex items-center gap-2 text-white font-mono text-xs tracking-widest mb-2">
+                            <Award size={14} className="text-gold" /> EDUCATION_PROTOCOL
+                        </div>
+                        <h4 className="text-xl font-bold text-white">B.E. Computer Science & Engineering</h4>
+                        <p className="text-sm text-gray-400">Chandigarh University • 2025-2029</p>
+                    </div>
+                </TiltCard>
             </div>
         </section>
     );

@@ -1,88 +1,109 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { Terminal, MapPin, Mail, Linkedin, ChevronDown } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { Terminal, MapPin, Mail, ChevronDown, Code, Hash, Power } from 'lucide-react';
 
 const Header = () => {
+    const { scrollY } = useScroll();
+    const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+    const scale = useTransform(scrollY, [0, 300], [1, 0.8]);
+
+    const [displayText, setDisplayText] = useState("");
+    const fullName = "UTKARSH PRATHAM";
+
+    useEffect(() => {
+        let i = 0;
+        const interval = setInterval(() => {
+            setDisplayText(fullName.slice(0, i));
+            i++;
+            if (i > fullName.length) clearInterval(interval);
+        }, 100);
+        return () => clearInterval(interval);
+    }, []);
+
     return (
-        <header className="relative min-h-[90vh] flex flex-col justify-center items-center text-center mb-24 z-20">
-            {/* Ambient Background Glow for Hero */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-neon-purple/20 rounded-full blur-[120px] pointer-events-none opacity-50" />
+        <motion.header
+            style={{ opacity, scale }}
+            className="relative min-h-screen flex flex-col justify-center items-center text-center z-20 perspective-1000"
+        >
+            {/* Ambient Background Glows */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] bg-void-purple/20 rounded-full blur-[100px] pointer-events-none animate-pulse-slow" />
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] bg-neon-violet/10 rounded-full blur-[80px] pointer-events-none mix-blend-screen" />
 
-            {/* Magnetic Profile Photo */}
-            <motion.div
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ duration: 1, type: "spring" }}
-                className="relative mb-12 group"
-            >
-                <div className="absolute inset-0 bg-gradient-to-tr from-neon-cyan to-neon-purple rounded-full blur-[30px] opacity-60 group-hover:opacity-100 transition-opacity duration-500 animate-pulse-slow"></div>
-                <div className="relative w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-white/10 group-hover:border-neon-cyan transition-colors shadow-2xl">
-                    <img
-                        src="/assets/profile.png"
-                        alt="Utkarsh Pratham"
-                        className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 transition-all duration-700 scale-100 group-hover:scale-110"
-                    />
-                    {/* Premium Shine Effect */}
-                    <div className="absolute inset-0 bg-gradient-to-tr from-white/20 to-transparent opacity-0 group-hover:opacity-40 transition-opacity duration-500" />
+            {/* HUD Elements */}
+            <div className="absolute top-10 w-full max-w-7xl flex justify-between items-center px-6 text-xs font-mono text-neon-cyan/50 tracking-widest uppercase opacity-70">
+                <div className="flex items-center gap-2">
+                    <Power size={14} className="text-neon-pink animate-pulse" />
+                    <span>System: Online</span>
                 </div>
-            </motion.div>
+                <div className="flex gap-4">
+                    <span>CPU: 34%</span>
+                    <span>MEM: 12GB</span>
+                    <span>NET: SECURE</span>
+                </div>
+                <div>v2.0.26</div>
+            </div>
 
-            {/* Kinetic Typography Name Reveal */}
+            {/* Main Content */}
+            <div className="relative group">
+                {/* Glitch Layers */}
+                <h1 className="text-6xl md:text-9xl font-display font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-500 mb-2 leading-none relative z-10">
+                    {displayText}<span className="animate-pulse text-neon-cyan">_</span>
+                </h1>
+
+                {/* Cyber Reflection */}
+                <h1 className="absolute top-full left-0 w-full text-6xl md:text-9xl font-display font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-t from-neon-violet/20 to-transparent scale-y-[-0.5] blur-sm opacity-50 pointer-events-none">
+                    {displayText}
+                </h1>
+            </div>
+
             <motion.div
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.5 }}
-                className="relative z-10"
+                transition={{ delay: 1.5 }}
+                className="mt-8 flex flex-col items-center gap-6"
             >
-                <h1 className="text-6xl md:text-9xl font-display font-black tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white via-gray-200 to-gray-500 mb-2 leading-none">
-                    UTKARSH
-                </h1>
-                <h1 className="text-6xl md:text-9xl font-display font-black tracking-tight text-white mb-6 leading-none relative">
-                    <span className="absolute inset-0 text-neon-purple blur-[2px] opacity-50 translate-x-[2px]">PRATHAM</span>
-                    <span className="relative">PRATHAM</span>
-                </h1>
-            </motion.div>
-
-            {/* Status & Role */}
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ delay: 1 }}
-                className="flex flex-col items-center gap-4 mb-12"
-            >
-                <div className="px-4 py-2 rounded-full border border-neon-cyan/30 bg-neon-cyan/5 backdrop-blur-md flex items-center gap-3">
-                    <span className="relative flex h-3 w-3">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-cyan opacity-75"></span>
-                        <span className="relative inline-flex rounded-full h-3 w-3 bg-neon-cyan"></span>
-                    </span>
-                    <span className="text-neon-cyan font-mono text-xs tracking-widest uppercase">Cybersecurity & Full Stack Developer</span>
+                {/* Role Badge */}
+                <div className="px-6 py-2 rounded-none border-x border-neon-cyan/50 bg-black/40 backdrop-blur-sm flex items-center gap-3 shadow-[0_0_15px_rgba(0,240,255,0.2)]">
+                    <Code size={16} className="text-neon-violet" />
+                    <span className="text-neon-cyan font-mono text-sm tracking-[0.2em] uppercase">Cybersecurity & Full Stack</span>
+                    <Hash size={16} className="text-neon-violet" />
                 </div>
 
-                <div className="flex gap-6 text-gray-400 font-body text-sm md:text-base">
-                    <span className="flex items-center gap-2 hover:text-white transition-colors cursor-default">
-                        <MapPin size={16} className="text-neon-purple" /> New Delhi
+                <div className="flex gap-8 text-gray-400 font-mono text-xs md:text-sm tracking-widest">
+                    <span className="flex items-center gap-2 hover:text-white transition-colors cursor-crosshair">
+                        <MapPin size={14} className="text-neon-pink" />
+                        [LOC]: NEW DELHI
                     </span>
-                    <a href="mailto:utx1zz@gmail.com" className="flex items-center gap-2 hover:text-neon-cyan transition-colors">
-                        <Mail size={16} className="text-neon-purple" /> utx1zz@gmail.com
+                    <a href="mailto:utx1zz@gmail.com" className="flex items-center gap-2 hover:text-neon-cyan transition-colors cursor-pointer group">
+                        <Mail size={14} className="text-neon-pink group-hover:animate-bounce" />
+                        [MAIL]: UTX1ZZ@GMAIL.COM
                     </a>
                 </div>
             </motion.div>
 
-            {/* Resume Button */}
+            {/* Primary Action */}
             <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2 }}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 2 }}
+                className="mt-16"
             >
                 <a
                     href="/assets/resume.pdf"
                     download="Utkarsh_Pratham_Resume.pdf"
-                    className="group relative px-8 py-4 bg-white text-black font-display font-bold tracking-wider hover:bg-neon-cyan transition-colors duration-300 clip-path-slant"
+                    className="relative inline-flex items-center justify-center px-10 py-4 overflow-hidden font-display font-bold text-white transition-all duration-300 bg-transparent border border-neon-violet/50 hover:bg-neon-violet/10 group"
                 >
-                    <span className="relative z-10 flex items-center gap-2">
-                        <Terminal size={18} /> INITIALIZE_RESUME
+                    <span className="absolute w-0 h-0 transition-all duration-500 ease-out bg-neon-violet rounded-full group-hover:w-56 group-hover:h-56 opacity-10"></span>
+                    <span className="relative flex items-center gap-3 text-neon-violet group-hover:text-white transition-colors">
+                        <Terminal size={20} />
+                        INITIALIZE_PROFILE
                     </span>
-                    <div className="absolute inset-0 bg-neon-cyan transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300" />
+
+                    {/* Corners */}
+                    <span className="absolute top-0 left-0 w-2 h-2 border-t-2 border-l-2 border-neon-cyan"></span>
+                    <span className="absolute top-0 right-0 w-2 h-2 border-t-2 border-r-2 border-neon-cyan"></span>
+                    <span className="absolute bottom-0 left-0 w-2 h-2 border-b-2 border-l-2 border-neon-cyan"></span>
+                    <span className="absolute bottom-0 right-0 w-2 h-2 border-b-2 border-r-2 border-neon-cyan"></span>
                 </a>
             </motion.div>
 
@@ -90,12 +111,12 @@ const Header = () => {
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 2, duration: 1 }}
-                className="absolute bottom-10 animate-bounce text-gray-500"
+                transition={{ delay: 2.5, duration: 1 }}
+                className="absolute bottom-10 animate-bounce text-neon-cyan/50"
             >
                 <ChevronDown size={24} />
             </motion.div>
-        </header>
+        </motion.header>
     );
 };
 

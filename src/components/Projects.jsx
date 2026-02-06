@@ -45,18 +45,24 @@ const ProjectCard = ({ project, index }) => {
                 rotateX,
                 transformStyle: "preserve-3d",
             }}
-            className="relative w-full rounded-xl bg-cyber-glass border border-white/5 p-6 hover:border-neon-cyan/50 transition-colors group cursor-pointer perspective-1000"
+            className="relative w-full h-full rounded-xl transition-colors group cursor-pointer perspective-1000"
         >
-            <div
-                style={{ transform: "translateZ(75px)", transformStyle: "preserve-3d" }}
-                className="absolute inset-4 rounded-lg bg-black/50 shadow-inner pointer-events-none"
-            />
+            {/* Base Glass Layer & Holographic Effect */}
+            <div className={`
+                absolute inset-0 rounded-xl bg-cyber-glass backdrop-blur-xl border border-white/10 shadow-lg
+                group-hover:shadow-[0_0_30px_rgba(189,0,255,0.15)] transition-shadow duration-500
+                overflow-hidden z-0
+            `} style={{ transform: "translateZ(0px)" }}>
+                <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-white/10 group-hover:ring-white/20" />
+                <div className="absolute -inset-[1px] rounded-xl bg-gradient-to-r from-neon-purple via-neon-cyan to-neon-violet opacity-0 group-hover:opacity-30 blur-sm transition-opacity duration-500" />
+            </div>
+
             <div
                 style={{ transform: "translateZ(50px)" }}
-                className="relative flex flex-col h-full"
+                className="relative flex flex-col h-full p-6 z-10"
             >
                 <div className="flex justify-between items-start mb-6">
-                    <div className="p-3 bg-neon-cyan/10 rounded-lg text-neon-cyan">
+                    <div className="p-3 bg-neon-cyan/10 rounded-lg text-neon-cyan border border-neon-cyan/20">
                         {project.icon}
                     </div>
                     <div className="flex gap-3">
@@ -83,18 +89,12 @@ const ProjectCard = ({ project, index }) => {
 
                 <div className="flex flex-wrap gap-2 mt-auto">
                     {project.tech.map((t, i) => (
-                        <span key={i} className="px-2 py-1 text-xs font-mono text-neon-purple border border-neon-purple/30 rounded bg-neon-purple/5">
+                        <span key={i} className="px-2 py-1 text-xs font-mono text-neon-violet border border-neon-violet/30 rounded bg-neon-violet/5">
                             {t}
                         </span>
                     ))}
                 </div>
             </div>
-
-            {/* Glossy Overlay */}
-            <div
-                style={{ transform: "translateZ(100px)" }}
-                className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent opacity-0 group-hover:opacity-10 rounded-xl pointer-events-none transition-opacity duration-300"
-            />
         </motion.div>
     );
 };
